@@ -17,6 +17,7 @@ public final class SmartCard {
         put(Constants.PGT, 1);
         put(Constants.PGR, 1);
     }};
+
     private SmartCard(Date dateOfBirth, Date dateOfIssue) {
         this.dateOfBirth = dateOfBirth;
         this.dateOfIssue = dateOfIssue;

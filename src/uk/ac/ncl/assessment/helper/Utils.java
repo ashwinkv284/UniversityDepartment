@@ -1,10 +1,6 @@
 package uk.ac.ncl.assessment.helper;
 
 import uk.ac.ncl.assessment.factory.module.Module;
-import uk.ac.ncl.assessment.student.PGRStudent;
-import uk.ac.ncl.assessment.student.PGTStudent;
-import uk.ac.ncl.assessment.student.Student;
-import uk.ac.ncl.assessment.student.UGStudent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

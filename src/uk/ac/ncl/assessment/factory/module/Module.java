@@ -1,7 +1,5 @@
 package uk.ac.ncl.assessment.factory.module;
 
-import uk.ac.ncl.assessment.factory.supervisor.Supervisor;
-
 import java.util.HashSet;
 
 public final class Module {
@@ -39,6 +37,6 @@ public final class Module {
 
     @Override
     public String toString() {
-        return this.getCode() + "" + this.getName() + "" + this.getCredits();
+        return this.getCode() + "," + this.getName() + "," + this.getCredits();
     }
 }
