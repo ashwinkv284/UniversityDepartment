@@ -9,5 +9,5 @@ public interface Student {
     StudentId getStudentId();
     String getStudentType();
     List<Module> getStudentModules();
-    Boolean checkEnoughCredit();
+    boolean checkEnoughCredit();
 }

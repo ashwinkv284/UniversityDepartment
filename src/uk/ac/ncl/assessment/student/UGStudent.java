@@ -17,12 +17,12 @@ public class UGStudent extends AbstractStudent {
         if (ageOfStudent >= 17) {
             super.setSmartCard();
         } else {
-            System.err.println("Student below 17 years old is not eligible for Smart Card");
+            System.err.println("UG Student below 17 years old is not eligible for Smart Card");
         }
     }
 
     @Override
-    public Boolean checkEnoughCredit() {
+    public boolean checkEnoughCredit() {
         return Utils.checkEnoughCredit(this.getStudentModules(), numberOfCredits);
     }
 }

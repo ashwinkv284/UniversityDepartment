@@ -38,4 +38,20 @@ public final class Supervisor {
     public String toString() {
         return "Name: " + this.getFirstName() + " " + this.getLastName() + ", " + "Email: " + this.getEmail();
     }
+
+    @Override
+    public boolean equals(Object sVisor) {
+        if(sVisor instanceof Supervisor) {
+            Supervisor supervisor = (Supervisor) sVisor;
+            return this.getEmail().equals(supervisor.getEmail());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hc = 17;
+        hc = 37 * hc + (this.getEmail() == null ? 0 : this.getEmail().hashCode());
+        return hc;
+    }
 }

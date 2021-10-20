@@ -21,7 +21,7 @@ public class AbstractStudentTest {
     @Test
     public void getStudentIdTest() {
         List<Module> m = new ArrayList<Module>();
-        AbstractStudent a = new UGStudent("UG", "John", "Doe", new Date());
+        AbstractStudent a = new UGStudent("Undergraduate", "John", "Doe", new Date());
         a.setStudentId();
         assertNotNull(a.getStudentId().toString());
     }
@@ -29,7 +29,7 @@ public class AbstractStudentTest {
     @Test
     public void getStudentNameTest() {
         List<Module> m = new ArrayList<Module>();
-        AbstractStudent a = new UGStudent("UG", "John", "Doe", new Date());
+        AbstractStudent a = new UGStudent("Undergraduate", "John", "Doe", new Date());
         assertEquals("getStudentName returns John Doe", "John Doe", a.getStudentName().toString());
     }
 
@@ -47,7 +47,7 @@ public class AbstractStudentTest {
         m.add(mod);
         AbstractStudent a = new UGStudent("Undergraduate", "John", "Doe", new Date());
         a.setStudentModules(m);
-        List sModList = a.getStudentModules();
+        List<Module> sModList = a.getStudentModules();
         assertTrue(m.size() == sModList.size() && m.containsAll(sModList) && sModList.containsAll(m));
     }
 

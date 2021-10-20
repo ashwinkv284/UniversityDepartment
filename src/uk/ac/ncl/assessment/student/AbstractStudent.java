@@ -62,7 +62,7 @@ public abstract class AbstractStudent implements Student {
         if (this.smartCard == null) {
             this.smartCard = SmartCard.getInstance(this.studentName.getFirstName(),
                                                    this.studentName.getLastName(),
-                                                   this.dateOfBirth);
+                                                   this.dateOfBirth, this.studentType);
         } else {
             throw new Exception("Smart Card already provided to student");
         }
@@ -72,7 +72,7 @@ public abstract class AbstractStudent implements Student {
         this.smartCard = smartCard;
     }
 
-    public Boolean checkEnoughCredit() {
+    public boolean checkEnoughCredit() {
         return true;
     }
 

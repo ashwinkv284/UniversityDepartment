@@ -46,7 +46,7 @@ public class University {
     public Boolean amendStudentData(StudentId studentId, Student student) throws Exception {
         checkValidStudentId(studentId);
         checkValidStudent(student, true);
-        AbstractStudent oldStudentData = (AbstractStudent)allStudents.get(studentId);
+        AbstractStudent oldStudentData = (AbstractStudent)allStudents.get(studentId.toString());
         AbstractStudent newStudentData = (AbstractStudent) student;
         newStudentData.setStudentId(studentId);
         newStudentData.setSmartCard(oldStudentData.getSmartCard());

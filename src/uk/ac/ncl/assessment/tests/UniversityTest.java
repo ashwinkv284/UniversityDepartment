@@ -11,6 +11,7 @@ import uk.ac.ncl.assessment.student.UGStudent;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -86,8 +87,9 @@ public class UniversityTest {
         Module mod = Module.getInstance("CSC8201", "Big Data Analytics", 10);
         modules.add(mod);
         try {
-            uni.getNoOfStudents();
             uni.amendStudentData(s.getStudentId(), s);
+            List<Module> sModList = s.getStudentModules();
+            assertTrue(modules.size() == sModList.size() && modules.containsAll(sModList) && sModList.containsAll(modules));
         } catch (Exception e) {
             assertNull(e);
         }
