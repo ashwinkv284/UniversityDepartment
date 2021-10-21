@@ -7,13 +7,27 @@ public final class Module {
     private final String name;
     private final int credits;
     private final static HashSet<String> modules = new HashSet<String>();
-
+    /**
+     * Returns instance of the class
+     *
+     * @param code    - code of the module
+     * @param name    - name of the module
+     * @param credits - credits allocated for the module
+     */
     private Module(String code, String name, int credits) {
         this.code = code;
         this.name = name;
         this.credits = credits;
     }
 
+    /**
+     * Returns instance of the class
+     *
+     * @param code    - code of the module
+     * @param name    - name of the module
+     * @param credits - credits allocated for the module
+     * @return        - Instance of class
+     */
     public static Module getInstance(String code, String name, int credits) {
         if(!modules.contains(code+name+credits)) {
             modules.add(code+name+credits);
@@ -23,18 +37,38 @@ public final class Module {
         return new Module(code, name, credits);
     }
 
+    /**
+     * Returns code of the module
+     *
+     * @return - module code
+     */
     public String getCode() {
         return this.code;
     }
 
+    /**
+     * Returns name of the module
+     *
+     * @return - module name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Returns credits of the module
+     *
+     * @return - module credits
+     */
     public int getCredits() {
         return this.credits;
     }
 
+    /**
+     * Returns string value of the object
+     *
+     * @return - String
+     */
     @Override
     public String toString() {
         return this.getCode() + "," + this.getName() + "," + this.getCredits();

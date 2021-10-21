@@ -84,7 +84,7 @@ public class University {
                 allModules.put(values[0], Module.getInstance(values[0], values[1], Integer.parseInt(values[2])));
             }
         } catch (FileNotFoundException e) {
-            throw new FileNotFoundException(e.getMessage());
+            throw new FileNotFoundException("File to load modules not found");
         }
     }
 
@@ -100,7 +100,7 @@ public class University {
                 allSupervisors.put(values[2], Supervisor.getInstance(values[0], values[1], values[2]));
             }
         } catch (FileNotFoundException e) {
-            throw new FileNotFoundException(e.getMessage());
+            throw new FileNotFoundException("File to load supervisors not found");
         }
     }
 
