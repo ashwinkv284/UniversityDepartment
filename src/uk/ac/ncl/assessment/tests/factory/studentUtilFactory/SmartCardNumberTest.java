@@ -2,7 +2,6 @@ package uk.ac.ncl.assessment.tests.factory.studentUtilFactory;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCardNumber;
 
 import static org.junit.Assert.assertNotEquals;

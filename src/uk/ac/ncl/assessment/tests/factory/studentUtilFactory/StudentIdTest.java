@@ -2,12 +2,9 @@ package uk.ac.ncl.assessment.tests.factory.studentUtilFactory;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCard;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentId;
-import uk.ac.ncl.assessment.helper.Constants;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertNotEquals;
 
 public class StudentIdTest {
     StudentId studentId;
