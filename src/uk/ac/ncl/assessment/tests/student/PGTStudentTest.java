@@ -46,4 +46,8 @@ public class PGTStudentTest {
         pgtStudent.setStudentModules(modules);
         assertFalse(pgtStudent.checkEnoughCredit());
     }
+    @Test
+    public void passPercentageTest() {
+        assertEquals(50, pgtStudent.getPassPercentage());
+    }
 }

@@ -40,4 +40,12 @@ public class UGStudent extends AbstractStudent {
     public boolean checkEnoughCredit() {
         return Utils.checkEnoughCredit(this.getStudentModules(), numberOfCredits);
     }
+    /**
+     * returns pass percentage required
+     *
+     * @return passPercentage
+     */
+    public int getPassPercentage() {
+        return passPercentage;
+    }
 }

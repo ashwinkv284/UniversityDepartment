@@ -59,4 +59,12 @@ public class PGRStudent extends AbstractStudent{
     public void setStudentModules(List<Module> modules) {
         System.err.println("PGR Students does not need to register for modules");
     }
+    /**
+     * returns pass percentage required
+     *
+     * @return passPercentage
+     */
+    public int getPassPercentage() {
+        return passPercentage;
+    }
 }

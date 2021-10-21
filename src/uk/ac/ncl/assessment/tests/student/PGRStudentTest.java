@@ -49,6 +49,9 @@ public class PGRStudentTest {
     public void PGRStudentModuleTest() {
         pgrStudent.setStudentModules(null);
     }
-
+    @Test
+    public void passPercentageTest() {
+        assertEquals(50, pgrStudent.getPassPercentage());
+    }
 
 }

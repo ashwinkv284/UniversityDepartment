@@ -46,4 +46,8 @@ public class UGStudentTest {
         ugStudent.setStudentModules(modules);
         assertFalse(ugStudent.checkEnoughCredit());
     }
+    @Test
+    public void passPercentageTest() {
+        assertEquals(40, ugStudent.getPassPercentage());
+    }
 }
