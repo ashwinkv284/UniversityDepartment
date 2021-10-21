@@ -1,14 +1,15 @@
 package uk.ac.ncl.assessment.tests.helper;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
-
 import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.helper.Utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class UtilsTest {
     @Test

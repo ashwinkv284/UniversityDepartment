@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentName;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class StudentNameTest {
     StudentName name;

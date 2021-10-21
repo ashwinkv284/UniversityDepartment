@@ -3,7 +3,7 @@ package uk.ac.ncl.assessment.tests.helper;
 import org.junit.Test;
 import uk.ac.ncl.assessment.helper.Constants;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ConstantsTest {
     @Test

@@ -3,12 +3,15 @@ package uk.ac.ncl.assessment;
 import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentId;
 import uk.ac.ncl.assessment.factory.supervisor.Supervisor;
+import uk.ac.ncl.assessment.helper.Constants;
 import uk.ac.ncl.assessment.student.AbstractStudent;
+import uk.ac.ncl.assessment.student.PGRStudent;
 import uk.ac.ncl.assessment.student.Student;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class University {
@@ -39,6 +42,15 @@ public class University {
         AbstractStudent stu = (AbstractStudent) student;
         stu.setStudentId();
         stu.setSmartCard();
+        if(student.getStudentType().equals(Constants.PGR)) {
+            Random random = new Random();
+            PGRStudent pgrStu = (PGRStudent)stu;
+            Object[] supervisorKeys = allSupervisors.keySet().toArray();
+            String supervisorKey = (String)supervisorKeys[(random.nextInt(allSupervisors.keySet().size()))];
+            pgrStu.setSupervisor(allSupervisors.get(supervisorKey));
+            allStudents.put(pgrStu.getStudentId().toString(), pgrStu);
+            return true;
+        }
         allStudents.put(stu.getStudentId().toString(), stu);
         return true;
     }

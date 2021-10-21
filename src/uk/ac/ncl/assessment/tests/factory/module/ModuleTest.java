@@ -4,7 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ncl.assessment.factory.module.Module;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ModuleTest {
     Module module;

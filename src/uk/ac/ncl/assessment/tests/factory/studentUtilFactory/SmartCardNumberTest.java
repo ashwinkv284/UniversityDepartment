@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCardNumber;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class SmartCardNumberTest {
     SmartCardNumber smartCardNumber;

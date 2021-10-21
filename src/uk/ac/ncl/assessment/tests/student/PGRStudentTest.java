@@ -2,13 +2,15 @@ package uk.ac.ncl.assessment.tests.student;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import uk.ac.ncl.assessment.factory.supervisor.Supervisor;
 import uk.ac.ncl.assessment.helper.Constants;
 import uk.ac.ncl.assessment.student.PGRStudent;
 
 import java.util.Calendar;
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class PGRStudentTest {
     Calendar cal;

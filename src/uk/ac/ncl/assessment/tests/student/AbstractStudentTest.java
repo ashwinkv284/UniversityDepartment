@@ -2,15 +2,16 @@ package uk.ac.ncl.assessment.tests.student;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
+import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.student.AbstractStudent;
 import uk.ac.ncl.assessment.student.UGStudent;
-import uk.ac.ncl.assessment.factory.module.Module;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class AbstractStudentTest {
     @Before

@@ -2,8 +2,9 @@ package uk.ac.ncl.assessment.tests.factory.supervisor;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import uk.ac.ncl.assessment.factory.supervisor.Supervisor;
+
+import static org.junit.Assert.*;
 
 public class SupervisorTest {
     Supervisor supervisor;

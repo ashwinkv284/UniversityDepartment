@@ -62,7 +62,6 @@ public class UniversityTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
         PGRStudent s = new PGRStudent("Postgraduate Research","John", "Doe",cal.getTime());
-        s.setSupervisor(uni.getAllSupervisors().get("janedoe@ncl.ac.uk"));
         Boolean regSuccess = null;
         try {
             regSuccess = uni.registerStudent(s);
@@ -70,7 +69,7 @@ public class UniversityTest {
             assertNull(e);
         }
         assertTrue((boolean) regSuccess);
-        assertEquals("janedoe@ncl.ac.uk", s.getSupervisor().getEmail());
+        assertNotNull(s.getSupervisor().getEmail());
     }
     @Test
     public void amendStudentDataTest() {
