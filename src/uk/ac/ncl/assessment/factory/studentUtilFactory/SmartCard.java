@@ -99,7 +99,6 @@ public final class SmartCard {
     public Date getExpiryDate() {
         return dateOfExpiry;
     }
-
     /**
      * Sets expiry date of smart card
      *
@@ -107,5 +106,29 @@ public final class SmartCard {
      */
     private void setExpiryDate(Date expiryDate) {
         this.dateOfExpiry = expiryDate;
+    }
+    /**
+     * Checks if the two objects of the same class are equal
+     *
+     * @return boolean - true if equal, false if not equal
+     */
+    @Override
+    public boolean equals(Object sc) {
+        if(sc instanceof SmartCard) {
+            SmartCard smartCard = (SmartCard) sc;
+            return this.getSmartCardNumber().equals(smartCard.getSmartCardNumber());
+        }
+        return false;
+    }
+    /**
+     * Generates hashCode for the object
+     *
+     * @return int
+     */
+    @Override
+    public int hashCode() {
+        int hc = 17;
+        hc = 37 * hc + (this.getSmartCardNumber() == null ? 0 : this.getSmartCardNumber().hashCode());
+        return hc;
     }
 }

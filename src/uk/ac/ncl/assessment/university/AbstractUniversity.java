@@ -6,7 +6,7 @@ import uk.ac.ncl.assessment.student.Student;
 
 import java.util.HashMap;
 
-public class AbstractUniversity implements UniversityI {
+public class AbstractUniversity implements University {
     private static final HashMap<String, Student> allStudents = new HashMap<String, Student>();
     /**
      * Returns number of students registered

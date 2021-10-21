@@ -30,6 +30,9 @@ public final class StudentId {
         }
         return new StudentId(studentId);
     }
+    public String getStudentId() {
+        return this.studentId;
+    }
     /**
      * Returns string value of object
      *
@@ -38,5 +41,29 @@ public final class StudentId {
     @Override
     public String toString() {
         return this.studentId;
+    }
+    /**
+     * Checks if the two objects of the same class are equal
+     *
+     * @return boolean - true if equal, false if not equal
+     */
+    @Override
+    public boolean equals(Object sId) {
+        if(sId instanceof StudentId) {
+            StudentId studentId = (StudentId) sId;
+            return this.getStudentId().equals(studentId.getStudentId());
+        }
+        return false;
+    }
+    /**
+     * Generates hashCode for the object
+     *
+     * @return int
+     */
+    @Override
+    public int hashCode() {
+        int hc = 17;
+        hc = 37 * hc + (this.getStudentId() == null ? 0 : this.getStudentId().hashCode());
+        return hc;
     }
 }

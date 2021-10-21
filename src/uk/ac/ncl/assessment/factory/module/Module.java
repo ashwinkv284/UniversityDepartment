@@ -73,4 +73,29 @@ public final class Module {
     public String toString() {
         return this.getCode() + "," + this.getName() + "," + this.getCredits();
     }
+
+    /**
+     * Checks if the two objects of the same class are equal
+     *
+     * @return boolean - true if equal, false if not equal
+     */
+    @Override
+    public boolean equals(Object mod) {
+        if(mod instanceof Module) {
+            Module module = (Module) mod;
+            return this.getCode().equals(module.getCode());
+        }
+        return false;
+    }
+    /**
+     * Generates hashCode for the object
+     *
+     * @return int
+     */
+    @Override
+    public int hashCode() {
+        int hc = 17;
+        hc = 37 * hc + (this.getCode() == null ? 0 : this.getCode().hashCode());
+        return hc;
+    }
 }

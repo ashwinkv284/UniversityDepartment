@@ -2,7 +2,9 @@ package uk.ac.ncl.assessment.student;
 
 import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentId;
+import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentName;
 
+import java.util.Date;
 import java.util.List;
 
 public interface Student {
@@ -12,6 +14,18 @@ public interface Student {
      * @return - StudentId
      */
     StudentId getStudentId();
+    /**
+     * Returns studentName
+     *
+     * @return - StudentName - name of student
+     */
+    StudentName getStudentName();
+    /**
+     * Returns date Of Birth of student
+     *
+     * @return - Date - date of birth
+     */
+    Date getStudentDoB();
     /**
      * Returns studentType
      *

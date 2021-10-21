@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Utils {
+public final class Utils {
     /**
      * calculates age of an individual based on the date of birth
      *

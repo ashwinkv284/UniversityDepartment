@@ -34,7 +34,14 @@ public final class SmartCardNumber {
         }
         return new SmartCardNumber(smartCardNumber);
     }
-
+    /**
+     * Returns smartCardNumber
+     *
+     * @return - String
+     */
+    public String getSmartCardNumber() {
+        return this.smartCardNumber;
+    }
     /**
      * Returns string version of object
      *
@@ -43,5 +50,29 @@ public final class SmartCardNumber {
     @Override
     public String toString() {
         return this.smartCardNumber;
+    }
+    /**
+     * Checks if the two objects of the same class are equal
+     *
+     * @return boolean - true if equal, false if not equal
+     */
+    @Override
+    public boolean equals(Object scNo) {
+        if(scNo instanceof SmartCardNumber) {
+            SmartCardNumber smartCardNo = (SmartCardNumber) scNo;
+            return this.getSmartCardNumber().equals(smartCardNo.getSmartCardNumber());
+        }
+        return false;
+    }
+    /**
+     * Generates hashCode for the object
+     *
+     * @return int
+     */
+    @Override
+    public int hashCode() {
+        int hc = 17;
+        hc = 37 * hc + (this.getSmartCardNumber() == null ? 0 : this.getSmartCardNumber().hashCode());
+        return hc;
     }
 }

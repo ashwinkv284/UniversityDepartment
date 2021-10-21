@@ -48,6 +48,7 @@ public class Department extends AbstractUniversity {
             put("Student", student);
         }};
         Validate.validateParams(params);
+        validateStudentParams(student, params);
 
         AbstractStudent stu = (AbstractStudent) student;
         stu.setStudentId();
@@ -76,9 +77,11 @@ public class Department extends AbstractUniversity {
             put("StudentId", studentId);
         }};
         Validate.validateParams(params);
+        validateStudentParams(student, params);
         if(!checkStudentExists(studentId)) {
             throw new Exception("Student does not exist");
         }
+
         return super.amendStudentData(studentId, student);
     }
     /**
@@ -97,6 +100,7 @@ public class Department extends AbstractUniversity {
         if(!checkStudentExists(studentId)) {
             throw new Exception("Student does not exist");
         }
+
         return super.terminateStudent(studentId);
     }
     /**
@@ -144,5 +148,12 @@ public class Department extends AbstractUniversity {
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("File to load supervisors not found");
         }
+    }
+
+    private void validateStudentParams(Student student, HashMap<String, Object> params) throws Exception {
+        params.put("Student Name", student.getStudentName());
+        params.put("Student Date of Birth", student.getStudentDoB());
+        params.put("Student Type", student.getStudentType());
+        Validate.validateParams(params);
     }
 }

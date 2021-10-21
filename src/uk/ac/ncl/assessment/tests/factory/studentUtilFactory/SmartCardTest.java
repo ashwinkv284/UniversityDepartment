@@ -3,12 +3,13 @@ package uk.ac.ncl.assessment.tests.factory.studentUtilFactory;
 import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCard;
+import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCardNumber;
 import uk.ac.ncl.assessment.helper.Constants;
 
 import java.util.Calendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 public class SmartCardTest {
     Calendar cal;
@@ -37,5 +38,15 @@ public class SmartCardTest {
         c.setTime(smartCard.getDateOfIssue());
         c.add(Calendar.YEAR, 4);
         assertEquals(c.getTime(), smartCard.getExpiryDate());
+    }
+    @Test
+    public void equalsTest() {
+        SmartCard sc = SmartCard.getInstance("Lorem", "Ipsum", cal.getTime(), Constants.UG);
+        assertNotEquals(smartCard, sc);
+    }
+    @Test
+    public void hashCodeTest() {
+        SmartCard sc = SmartCard.getInstance("Lorem", "Ipsum", cal.getTime(), Constants.UG);
+        assertNotEquals(sc.hashCode(), smartCard.hashCode());
     }
 }

@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ncl.assessment.factory.module.Module;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class ModuleTest {
     Module module;
@@ -35,7 +34,19 @@ public class ModuleTest {
     }
 
     @Test
-    public void testToString() {
+    public void toStringTest() {
         assertEquals("CSC8404,Adv Programming in Java,10", module.toString());
+    }
+
+    @Test
+    public void equalsTest() {
+        Module mod1 = Module.getInstance("CSC8701", "MBSE", 10);
+        assertNotEquals(module, mod1);
+    }
+
+    @Test
+    public void hashCodeTest() {
+        Module mod1 = Module.getInstance("CSC8702", "MBSE", 10);
+        assertNotEquals(module.hashCode(), mod1.hashCode());
     }
 }

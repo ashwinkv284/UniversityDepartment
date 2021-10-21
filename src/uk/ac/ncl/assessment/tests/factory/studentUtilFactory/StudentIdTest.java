@@ -2,10 +2,12 @@ package uk.ac.ncl.assessment.tests.factory.studentUtilFactory;
 
 import org.junit.Before;
 import org.junit.Test;
+import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCard;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentId;
+import uk.ac.ncl.assessment.helper.Constants;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 public class StudentIdTest {
     StudentId studentId;
@@ -24,5 +26,17 @@ public class StudentIdTest {
     @Test
     public void toStringTest() {
         assertNotNull(studentId.toString());
+    }
+
+    @Test
+    public void equalsTest() {
+        StudentId sId = StudentId.getInstance();
+        assertNotEquals(studentId, sId);
+    }
+
+    @Test
+    public void hashCodeTest() {
+        StudentId sId = StudentId.getInstance();
+        assertNotEquals(studentId.hashCode(), sId.hashCode());
     }
 }
