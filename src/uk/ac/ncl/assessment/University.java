@@ -38,7 +38,12 @@ public class University {
     }
 
     public Boolean registerStudent(Student student) throws Exception {
-        checkValidStudent(student, false);
+        HashMap<String, Object> params = new HashMap<>() {{
+            put("Student", student);
+            put("StudentId", student.getStudentId());
+        }};
+        Validate.validateParams(params);
+
         AbstractStudent stu = (AbstractStudent) student;
         stu.setStudentId();
         stu.setSmartCard();
@@ -49,15 +54,22 @@ public class University {
             String supervisorKey = (String)supervisorKeys[(random.nextInt(allSupervisors.keySet().size()))];
             pgrStu.setSupervisor(allSupervisors.get(supervisorKey));
             allStudents.put(pgrStu.getStudentId().toString(), pgrStu);
-            return true;
+        } else {
+            allStudents.put(stu.getStudentId().toString(), stu);
         }
-        allStudents.put(stu.getStudentId().toString(), stu);
         return true;
     }
 
     public Boolean amendStudentData(StudentId studentId, Student student) throws Exception {
-        checkValidStudentId(studentId);
-        checkValidStudent(student, true);
+        HashMap<String, Object> params = new HashMap<>() {{
+            put("Student", student);
+            put("StudentId", student.getStudentId());
+        }};
+        Validate.validateParams(params);
+        if(!allStudents.containsKey(student.getStudentId())) {
+            throw new Exception("Student does not exist");
+        }
+
         AbstractStudent oldStudentData = (AbstractStudent)allStudents.get(studentId.toString());
         AbstractStudent newStudentData = (AbstractStudent) student;
         newStudentData.setStudentId(studentId);
@@ -67,7 +79,13 @@ public class University {
     }
 
     public Boolean terminateStudent(StudentId studentId) throws Exception {
-        checkValidStudentId(studentId);
+        HashMap<String, Object> params = new HashMap<>() {{
+            put("StudentId", studentId);
+        }};
+        Validate.validateParams(params);
+        if(!allStudents.containsKey(studentId)) {
+            throw new Exception("Student does not exist");
+        }
         allStudents.remove(studentId.toString());
         return true;
     }
@@ -101,30 +119,6 @@ public class University {
             }
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("File to load supervisors not found");
-        }
-    }
-
-    private void checkValidStudentId(StudentId studentId) throws Exception {
-        if(studentId == null) {
-            throw new Exception("Invalid Student Id");
-        } else if(!allStudents.containsKey(studentId.toString())) {
-            throw new Exception("Student Id does not exist");
-        }
-    }
-
-    private void checkValidStudent(Student student, Boolean existingStudent) throws Exception {
-        if(student == null) {
-            throw new Exception("Invalid Student Data");
-        } else if (existingStudent){
-            AbstractStudent stud = (AbstractStudent) student;
-            if(stud.getStudentId() == null || stud.getSmartCard() == null) {
-                throw new Exception("Student Data without StudentId/SmartCard");
-            }
-        } else {
-            AbstractStudent stud = (AbstractStudent) student;
-            if(stud.getStudentId() != null || stud.getSmartCard() != null) {
-                throw new Exception("Cannot register already existing student");
-            }
         }
     }
 }

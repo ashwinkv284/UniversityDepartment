@@ -53,7 +53,7 @@ public final class SmartCard {
      */
     private void setSmartCardExpiry(String studentType) {
         Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
+        c.setTime(this.dateOfIssue);
         c.add(Calendar.YEAR, studentTypeToNoOfYearMap.get(studentType));
         this.setExpiryDate(c.getTime());
     }

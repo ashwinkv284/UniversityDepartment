@@ -30,11 +30,12 @@ public class SmartCardTest {
     }
     @Test
     public void getDateOfIssueTest() {
-        assertEquals(new Date(), smartCard.getDateOfIssue());
+        assertNotNull(smartCard.getDateOfIssue());
     }
     @Test
-    public void getDateOfExpiryTest() {Calendar c = Calendar.getInstance();
-        c.setTime(new Date());
+    public void getDateOfExpiryTest() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(smartCard.getDateOfIssue());
         c.add(Calendar.YEAR, 4);
         assertEquals(c.getTime(), smartCard.getExpiryDate());
     }
