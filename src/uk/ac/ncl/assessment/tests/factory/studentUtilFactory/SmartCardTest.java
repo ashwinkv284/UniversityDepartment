@@ -6,7 +6,6 @@ import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCard;
 import uk.ac.ncl.assessment.helper.Constants;
 
 import java.util.Calendar;
-import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

@@ -117,7 +117,7 @@ public class UniversityTest {
         try {
             uni.terminateStudent(null);
         } catch (Exception e) {
-            assertEquals("Invalid Student Id", e.getMessage());
+            assertEquals("StudentId cannot be null", e.getMessage());
         }
     }
     @Test
@@ -126,7 +126,7 @@ public class UniversityTest {
         try {
             uni.terminateStudent(sId);
         } catch (Exception e) {
-            assertEquals("Student Id does not exist", e.getMessage());
+            assertEquals("Student does not exist", e.getMessage());
         }
     }
     @Test

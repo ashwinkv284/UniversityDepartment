@@ -7,6 +7,7 @@ import uk.ac.ncl.assessment.helper.Constants;
 import uk.ac.ncl.assessment.student.AbstractStudent;
 import uk.ac.ncl.assessment.student.PGRStudent;
 import uk.ac.ncl.assessment.student.Student;
+import uk.ac.ncl.assessment.validate.Validate;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +41,6 @@ public class University {
     public Boolean registerStudent(Student student) throws Exception {
         HashMap<String, Object> params = new HashMap<>() {{
             put("Student", student);
-            put("StudentId", student.getStudentId());
         }};
         Validate.validateParams(params);
 
@@ -63,10 +63,10 @@ public class University {
     public Boolean amendStudentData(StudentId studentId, Student student) throws Exception {
         HashMap<String, Object> params = new HashMap<>() {{
             put("Student", student);
-            put("StudentId", student.getStudentId());
+            put("StudentId", studentId);
         }};
         Validate.validateParams(params);
-        if(!allStudents.containsKey(student.getStudentId())) {
+        if(!allStudents.containsKey(studentId.toString())) {
             throw new Exception("Student does not exist");
         }
 
@@ -83,7 +83,7 @@ public class University {
             put("StudentId", studentId);
         }};
         Validate.validateParams(params);
-        if(!allStudents.containsKey(studentId)) {
+        if(!allStudents.containsKey(studentId.toString())) {
             throw new Exception("Student does not exist");
         }
         allStudents.remove(studentId.toString());
