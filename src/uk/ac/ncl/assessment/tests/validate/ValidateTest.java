@@ -1,12 +1,12 @@
 package uk.ac.ncl.assessment.tests.validate;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-
 import uk.ac.ncl.assessment.validate.Validate;
 
 import java.util.HashMap;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ValidateTest {
     @Test

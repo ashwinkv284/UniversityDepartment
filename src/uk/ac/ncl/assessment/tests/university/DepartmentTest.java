@@ -1,13 +1,13 @@
-package uk.ac.ncl.assessment.tests;
+package uk.ac.ncl.assessment.tests.university;
 
 import org.junit.Before;
 import org.junit.Test;
-import uk.ac.ncl.assessment.University;
 import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.factory.studentUtilFactory.StudentId;
 import uk.ac.ncl.assessment.student.PGRStudent;
 import uk.ac.ncl.assessment.student.PGTStudent;
 import uk.ac.ncl.assessment.student.UGStudent;
+import uk.ac.ncl.assessment.university.Department;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,11 +15,11 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class UniversityTest {
-    University uni;
+public class DepartmentTest {
+    Department department;
     @Before
     public void setUp() throws Exception {
-        uni = University.getInstance();
+        department = Department.getInstance();
     }
 
     @Test
@@ -27,18 +27,18 @@ public class UniversityTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
         UGStudent s = new UGStudent("Undergraduate","John", "Doe",cal.getTime());
-        ArrayList<Module> modules = new ArrayList<Module>(uni.getAllModules().values());
+        ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         Boolean regSuccess = null;
         try {
-            regSuccess = uni.registerStudent(s);
+            regSuccess = department.registerStudent(s);
         } catch (Exception e) {
             assertNull(e);
         }
         assertEquals(true, (boolean) regSuccess);
         assertNotNull("Student id is not null", s.getStudentId());
         try {
-            uni.terminateStudent(s.getStudentId());
+            department.terminateStudent(s.getStudentId());
         } catch (Exception e) {
             assertNull(e);
         }
@@ -48,17 +48,17 @@ public class UniversityTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
         PGTStudent s = new PGTStudent("Postgraduate Taught","John", "Doe",cal.getTime());
-        ArrayList<Module> modules = new ArrayList<Module>(uni.getAllModules().values());
+        ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         Boolean regSuccess = null;
         try {
-            regSuccess = uni.registerStudent(s);
+            regSuccess = department.registerStudent(s);
         } catch (Exception e) {
             assertNull(e);
         }
         assertEquals(true, (boolean) regSuccess);
         try {
-            uni.terminateStudent(s.getStudentId());
+            department.terminateStudent(s.getStudentId());
         } catch (Exception e) {
             assertNull(e);
         }
@@ -70,14 +70,14 @@ public class UniversityTest {
         PGRStudent s = new PGRStudent("Postgraduate Research","John", "Doe",cal.getTime());
         Boolean regSuccess = false;
         try {
-            regSuccess = uni.registerStudent(s);
+            regSuccess = department.registerStudent(s);
         } catch (Exception e) {
             assertNull(e);
         }
         assertTrue((boolean) regSuccess);
         assertNotNull(s.getSupervisor().getEmail());
         try {
-            uni.terminateStudent(s.getStudentId());
+            department.terminateStudent(s.getStudentId());
         } catch (Exception e) {
             assertNull(e);
         }
@@ -87,24 +87,24 @@ public class UniversityTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
         UGStudent s = new UGStudent("Undergraduate","John", "Doe",cal.getTime());
-        ArrayList<Module> modules = new ArrayList<Module>(uni.getAllModules().values());
+        ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         try {
-            uni.registerStudent(s);
+            department.registerStudent(s);
         } catch (Exception e) {
             assertNull(e);
         }
         Module mod = Module.getInstance("CSC8201", "Big Data Analytics", 10);
         modules.add(mod);
         try {
-            uni.amendStudentData(s.getStudentId(), s);
+            department.amendStudentData(s.getStudentId(), s);
             List<Module> sModList = s.getStudentModules();
             assertTrue(modules.size() == sModList.size() && modules.containsAll(sModList) && sModList.containsAll(modules));
         } catch (Exception e) {
             assertNull(e);
         }
         try {
-            uni.terminateStudent(s.getStudentId());
+            department.terminateStudent(s.getStudentId());
         } catch (Exception e) {
             assertNull(e);
         }
@@ -114,15 +114,15 @@ public class UniversityTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
         UGStudent s = new UGStudent("Undergraduate","John", "Doe",cal.getTime());
-        ArrayList<Module> modules = new ArrayList<Module>(uni.getAllModules().values());
+        ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         try {
-            uni.registerStudent(s);
+            department.registerStudent(s);
         } catch (Exception e) {
             assertNull(e);
         }
         try {
-            Boolean terminateSuccess = uni.terminateStudent(s.getStudentId());
+            Boolean terminateSuccess = department.terminateStudent(s.getStudentId());
             assertTrue((boolean) terminateSuccess);
         } catch (Exception e) {
             assertNull(e);
@@ -131,7 +131,7 @@ public class UniversityTest {
     @Test
     public void terminateStudentWithNullStudentIdTest() {
         try {
-            uni.terminateStudent(null);
+            department.terminateStudent(null);
         } catch (Exception e) {
             assertEquals("StudentId cannot be null", e.getMessage());
         }
@@ -140,15 +140,15 @@ public class UniversityTest {
     public void terminateStudentWithNonExistentStudentIdTest() {
         StudentId sId = StudentId.getInstance();
         try {
-            uni.terminateStudent(sId);
+            department.terminateStudent(sId);
         } catch (Exception e) {
             assertEquals("Student does not exist", e.getMessage());
         }
     }
     @Test
     public void loadModulesAndSupervisorsTest() {
-        assertNotNull(uni.getAllModules());
-        assertNotNull(uni.getAllSupervisors());
+        assertNotNull(department.getAllModules());
+        assertNotNull(department.getAllSupervisors());
     }
     @Test
     public void noOfStudentsWithRecordsTest() {
@@ -156,11 +156,11 @@ public class UniversityTest {
         cal.set(1990, 1, 1);
         PGRStudent s = new PGRStudent("Postgraduate Research","John", "Doe",cal.getTime());
         try {
-           uni.registerStudent(s);
+           department.registerStudent(s);
         } catch (Exception e) {
             assertNull(e);
         }
-        int noOfStudents = uni.getNoOfStudents();
+        int noOfStudents = department.getNoOfStudents();
         assertEquals("University has 0 number of students", 1, noOfStudents);
     }
 }
