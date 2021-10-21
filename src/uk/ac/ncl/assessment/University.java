@@ -24,6 +24,8 @@ public class University {
     /**
      * Returns instance of the class
      *
+     * @return instance of university class
+     * @throws Exception when loading of modules/supervisors is not successful
      */
     public static University getInstance() throws Exception {
         if(uni == null) {
@@ -44,7 +46,9 @@ public class University {
     /**
      * Used to register students to the university
      *
+     * @param   student - object of student class with details of student
      * @return  boolean - returns true when student is successfully registered, otherwise throws exception
+     * @throws Exception when registration of student is not successful
      */
     public Boolean registerStudent(Student student) throws Exception {
         HashMap<String, Object> params = new HashMap<>() {{
@@ -70,7 +74,10 @@ public class University {
     /**
      * Used to update student data
      *
-     * @return  boolean - returns true when student is successfully updated, otherwise throws exception
+     * @param  student - object of student class with details of student
+     * @param  studentId - id of the student
+     * @return boolean - returns true when student is successfully updated, otherwise throws exception
+     * @throws Exception when update of student is not successful
      */
     public Boolean amendStudentData(StudentId studentId, Student student) throws Exception {
         HashMap<String, Object> params = new HashMap<>() {{
@@ -92,7 +99,9 @@ public class University {
     /**
      * Used to remove student data
      *
+     * @param studentId - id of the studentId
      * @return  boolean - returns true when student is successfully removed, otherwise throws exception
+     * @throws Exception when termination of student is not successful
      */
     public Boolean terminateStudent(StudentId studentId) throws Exception {
         HashMap<String, Object> params = new HashMap<>() {{
@@ -108,7 +117,7 @@ public class University {
     /**
      * Used to retrieve all modules available in the university
      *
-     * @return  HashMap<String,Module> - returns map of module code to module details
+     * @return returns map of module code to module details
      */
     public HashMap<String, Module> getAllModules() {
         return allModules;
@@ -131,7 +140,7 @@ public class University {
     /**
      * Used to retrieve all supervisors available in the university
      *
-     * @return  HashMap<String,Supervisor> - returns map of supervisor email to supervisor
+     * @return map of supervisor email to supervisor
      */
     public HashMap<String, Supervisor> getAllSupervisors() {
         return allSupervisors;

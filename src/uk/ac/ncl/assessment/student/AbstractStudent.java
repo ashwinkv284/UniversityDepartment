@@ -78,7 +78,7 @@ public abstract class AbstractStudent implements Student {
     /**
      * Returns List of student modules
      *
-     * @return - List<Module>
+     * @return - List of modules
      */
     public List<Module> getStudentModules() {
         return this.studentModules;
@@ -102,6 +102,7 @@ public abstract class AbstractStudent implements Student {
     /**
      * Sets smart card for student
      *
+     * @throws Exception when smart card is already provided to student
      */
     public void setSmartCard() throws Exception {
         if (this.smartCard == null) {

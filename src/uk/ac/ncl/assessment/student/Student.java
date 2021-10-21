@@ -21,7 +21,7 @@ public interface Student {
     /**
      * Returns List of student modules
      *
-     * @return - List<Module>
+     * @return - List of modules
      */
     List<Module> getStudentModules();
     /**
