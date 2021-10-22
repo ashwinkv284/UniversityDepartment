@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    85%
+    84.2%
   </span>
   <span class="absValue">
-    (17/20)
+    (16/19)
   </span>
 </td>
 </tr>
@@ -88,44 +88,42 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc"><i class="no-highlight">13</i>&nbsp;public class PGTStudentTest {</b>
 <i class="no-highlight">14</i>&nbsp;    Calendar cal;
 <i class="no-highlight">15</i>&nbsp;    PGTStudent pgtStudent;
-<i class="no-highlight">16</i>&nbsp;    int code;
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    Random r = new Random();</b>
 <i class="no-highlight">17</i>&nbsp;    @Before
 <i class="no-highlight">18</i>&nbsp;    public void setUp() {
-<b class="fc"><i class="no-highlight">19</i>&nbsp;        Random r = new Random();</b>
-<b class="fc"><i class="no-highlight">20</i>&nbsp;        code = r.nextInt(10000);</b>
-<b class="fc"><i class="no-highlight">21</i>&nbsp;        cal  = Calendar.getInstance();</b>
-<b class="fc"><i class="no-highlight">22</i>&nbsp;        cal.set(1990, 1, 1);</b>
-<b class="fc"><i class="no-highlight">23</i>&nbsp;        pgtStudent = new PGTStudent(Constants.PGR, code + &quot;John&quot;, &quot;Doe&quot;, cal.getTime());</b>
-<i class="no-highlight">24</i>&nbsp;    }
-<i class="no-highlight">25</i>&nbsp;    @Test
-<i class="no-highlight">26</i>&nbsp;    public void PGRStudentSetSmartCardTest() {
-<i class="no-highlight">27</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">28</i>&nbsp;            pgtStudent.setSmartCard();</b>
-<b class="nc"><i class="no-highlight">29</i>&nbsp;        } catch(Exception e) {</b>
-<b class="nc"><i class="no-highlight">30</i>&nbsp;            assertNull(e);</b>
-<b class="fc"><i class="no-highlight">31</i>&nbsp;        }</b>
-<i class="no-highlight">32</i>&nbsp;    }
-<i class="no-highlight">33</i>&nbsp;    @Test
-<i class="no-highlight">34</i>&nbsp;    public void PGRStudentSetSmartCardBelowAge() {
-<b class="fc"><i class="no-highlight">35</i>&nbsp;        pgtStudent = new PGTStudent(Constants.PGR, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<i class="no-highlight">36</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">37</i>&nbsp;            pgtStudent.setSmartCard();</b>
-<b class="fc"><i class="no-highlight">38</i>&nbsp;        } catch(Exception e) {</b>
-<b class="fc"><i class="no-highlight">39</i>&nbsp;            assertEquals(&quot;PG Students below 20 years old is not eligible for Smart Card&quot; ,e.getMessage());</b>
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        }</b>
-<i class="no-highlight">41</i>&nbsp;    }
-<i class="no-highlight">42</i>&nbsp;    @Test
-<i class="no-highlight">43</i>&nbsp;    public void checkEnoughCreditTest() throws Exception {
-<b class="fc"><i class="no-highlight">44</i>&nbsp;        List&lt;Module&gt; modules = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">45</i>&nbsp;        modules.add(Module.getInstance(&quot;CSC8607&quot;, &quot;Advanced Programming in Java&quot;, 10));</b>
-<b class="fc"><i class="no-highlight">46</i>&nbsp;        pgtStudent.setStudentModules(modules);</b>
-<b class="fc"><i class="no-highlight">47</i>&nbsp;        assertFalse(pgtStudent.checkEnoughCredit());</b>
-<i class="no-highlight">48</i>&nbsp;    }
-<i class="no-highlight">49</i>&nbsp;    @Test
-<i class="no-highlight">50</i>&nbsp;    public void passPercentageTest() {
-<b class="fc"><i class="no-highlight">51</i>&nbsp;        assertEquals(50, pgtStudent.getPassPercentage());</b>
-<i class="no-highlight">52</i>&nbsp;    }
-<i class="no-highlight">53</i>&nbsp;}
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        cal  = Calendar.getInstance();</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        cal.set(1990, 1, 1);</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        pgtStudent = new PGTStudent(Constants.PGR, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, cal.getTime());</b>
+<i class="no-highlight">22</i>&nbsp;    }
+<i class="no-highlight">23</i>&nbsp;    @Test
+<i class="no-highlight">24</i>&nbsp;    public void PGRStudentSetSmartCardTest() {
+<i class="no-highlight">25</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            pgtStudent.setSmartCard();</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        } catch(Exception e) {</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;            assertNull(e);</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        }</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;    @Test
+<i class="no-highlight">32</i>&nbsp;    public void PGRStudentSetSmartCardBelowAge() {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        pgtStudent = new PGTStudent(Constants.PGR, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<i class="no-highlight">34</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">35</i>&nbsp;            pgtStudent.setSmartCard();</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        } catch(Exception e) {</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;            assertEquals(&quot;PG Students below 20 years old is not eligible for Smart Card&quot; ,e.getMessage());</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        }</b>
+<i class="no-highlight">39</i>&nbsp;    }
+<i class="no-highlight">40</i>&nbsp;    @Test
+<i class="no-highlight">41</i>&nbsp;    public void checkEnoughCreditTest() throws Exception {
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        List&lt;Module&gt; modules = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        modules.add(Module.getInstance(&quot;CSC8607&quot;, &quot;Advanced Programming in Java&quot;, 10));</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;        pgtStudent.setStudentModules(modules);</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;        assertFalse(pgtStudent.checkEnoughCredit());</b>
+<i class="no-highlight">46</i>&nbsp;    }
+<i class="no-highlight">47</i>&nbsp;    @Test
+<i class="no-highlight">48</i>&nbsp;    public void passPercentageTest() {
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        assertEquals(50, pgtStudent.getPassPercentage());</b>
+<i class="no-highlight">50</i>&nbsp;    }
+<i class="no-highlight">51</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -152,7 +150,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-22 11:19</div>
+    <div style="float:right;">generated on 2021-10-22 12:29</div>
 </div>
 </body>
 </html>

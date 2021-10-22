@@ -102,78 +102,79 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">27</i>&nbsp;     * @param name    - name of the module
 <i class="no-highlight">28</i>&nbsp;     * @param credits - credits allocated for the module
 <i class="no-highlight">29</i>&nbsp;     * @return        - Instance of class
-<i class="no-highlight">30</i>&nbsp;     */
-<i class="no-highlight">31</i>&nbsp;    public static Module getInstance(String code, String name, int credits) throws Exception {
-<b class="fc"><i class="no-highlight">32</i>&nbsp;        if(!modules.contains(code+name+credits)) {</b>
-<b class="fc"><i class="no-highlight">33</i>&nbsp;            modules.add(code+name+credits);</b>
-<i class="no-highlight">34</i>&nbsp;        } else {
-<b class="fc"><i class="no-highlight">35</i>&nbsp;            throw new Exception(&quot;Module already exists&quot;);</b>
-<i class="no-highlight">36</i>&nbsp;        }
-<b class="fc"><i class="no-highlight">37</i>&nbsp;        return new Module(code, name, credits);</b>
-<i class="no-highlight">38</i>&nbsp;    }
-<i class="no-highlight">39</i>&nbsp;
-<i class="no-highlight">40</i>&nbsp;    /**
-<i class="no-highlight">41</i>&nbsp;     * Returns code of the module
-<i class="no-highlight">42</i>&nbsp;     *
-<i class="no-highlight">43</i>&nbsp;     * @return - module code
-<i class="no-highlight">44</i>&nbsp;     */
-<i class="no-highlight">45</i>&nbsp;    public String getCode() {
-<b class="fc"><i class="no-highlight">46</i>&nbsp;        return this.code;</b>
-<i class="no-highlight">47</i>&nbsp;    }
-<i class="no-highlight">48</i>&nbsp;
-<i class="no-highlight">49</i>&nbsp;    /**
-<i class="no-highlight">50</i>&nbsp;     * Returns name of the module
-<i class="no-highlight">51</i>&nbsp;     *
-<i class="no-highlight">52</i>&nbsp;     * @return - module name
-<i class="no-highlight">53</i>&nbsp;     */
-<i class="no-highlight">54</i>&nbsp;    public String getName() {
-<b class="fc"><i class="no-highlight">55</i>&nbsp;        return this.name;</b>
-<i class="no-highlight">56</i>&nbsp;    }
-<i class="no-highlight">57</i>&nbsp;
-<i class="no-highlight">58</i>&nbsp;    /**
-<i class="no-highlight">59</i>&nbsp;     * Returns credits of the module
-<i class="no-highlight">60</i>&nbsp;     *
-<i class="no-highlight">61</i>&nbsp;     * @return - module credits
-<i class="no-highlight">62</i>&nbsp;     */
-<i class="no-highlight">63</i>&nbsp;    public int getCredits() {
-<b class="fc"><i class="no-highlight">64</i>&nbsp;        return this.credits;</b>
-<i class="no-highlight">65</i>&nbsp;    }
-<i class="no-highlight">66</i>&nbsp;
-<i class="no-highlight">67</i>&nbsp;    /**
-<i class="no-highlight">68</i>&nbsp;     * Returns string value of the object
-<i class="no-highlight">69</i>&nbsp;     *
-<i class="no-highlight">70</i>&nbsp;     * @return - String
-<i class="no-highlight">71</i>&nbsp;     */
-<i class="no-highlight">72</i>&nbsp;    @Override
-<i class="no-highlight">73</i>&nbsp;    public String toString() {
-<b class="fc"><i class="no-highlight">74</i>&nbsp;        return this.getCode() + &quot;,&quot; + this.getName() + &quot;,&quot; + this.getCredits();</b>
-<i class="no-highlight">75</i>&nbsp;    }
-<i class="no-highlight">76</i>&nbsp;
-<i class="no-highlight">77</i>&nbsp;    /**
-<i class="no-highlight">78</i>&nbsp;     * Checks if the two objects of the same class are equal
-<i class="no-highlight">79</i>&nbsp;     *
-<i class="no-highlight">80</i>&nbsp;     * @return boolean - true if equal, false if not equal
-<i class="no-highlight">81</i>&nbsp;     */
-<i class="no-highlight">82</i>&nbsp;    @Override
-<i class="no-highlight">83</i>&nbsp;    public boolean equals(Object mod) {
-<b class="fc"><i class="no-highlight">84</i>&nbsp;        if(mod instanceof Module) {</b>
-<b class="fc"><i class="no-highlight">85</i>&nbsp;            Module module = (Module) mod;</b>
-<b class="fc"><i class="no-highlight">86</i>&nbsp;            return this.getCode().equals(module.getCode());</b>
-<i class="no-highlight">87</i>&nbsp;        }
-<b class="nc"><i class="no-highlight">88</i>&nbsp;        return false;</b>
-<i class="no-highlight">89</i>&nbsp;    }
-<i class="no-highlight">90</i>&nbsp;    /**
-<i class="no-highlight">91</i>&nbsp;     * Generates hashCode for the object
-<i class="no-highlight">92</i>&nbsp;     *
-<i class="no-highlight">93</i>&nbsp;     * @return int
-<i class="no-highlight">94</i>&nbsp;     */
-<i class="no-highlight">95</i>&nbsp;    @Override
-<i class="no-highlight">96</i>&nbsp;    public int hashCode() {
-<b class="fc"><i class="no-highlight">97</i>&nbsp;        int hc = 17;</b>
-<b class="fc"><i class="no-highlight">98</i>&nbsp;        hc = 37 * hc + (this.getCode() == null ? 0 : this.getCode().hashCode());</b>
-<b class="fc"><i class="no-highlight">99</i>&nbsp;        return hc;</b>
-<i class="no-highlight">100</i>&nbsp;    }
-<i class="no-highlight">101</i>&nbsp;}
+<i class="no-highlight">30</i>&nbsp;     * @throws Exception when module already exists
+<i class="no-highlight">31</i>&nbsp;     */
+<i class="no-highlight">32</i>&nbsp;    public static Module getInstance(String code, String name, int credits) throws Exception {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        if(!modules.contains(code+name+credits)) {</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;            modules.add(code+name+credits);</b>
+<i class="no-highlight">35</i>&nbsp;        } else {
+<b class="fc"><i class="no-highlight">36</i>&nbsp;            throw new Exception(&quot;Module already exists&quot;);</b>
+<i class="no-highlight">37</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        return new Module(code, name, credits);</b>
+<i class="no-highlight">39</i>&nbsp;    }
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;    /**
+<i class="no-highlight">42</i>&nbsp;     * Returns code of the module
+<i class="no-highlight">43</i>&nbsp;     *
+<i class="no-highlight">44</i>&nbsp;     * @return - module code
+<i class="no-highlight">45</i>&nbsp;     */
+<i class="no-highlight">46</i>&nbsp;    public String getCode() {
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        return this.code;</b>
+<i class="no-highlight">48</i>&nbsp;    }
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    /**
+<i class="no-highlight">51</i>&nbsp;     * Returns name of the module
+<i class="no-highlight">52</i>&nbsp;     *
+<i class="no-highlight">53</i>&nbsp;     * @return - module name
+<i class="no-highlight">54</i>&nbsp;     */
+<i class="no-highlight">55</i>&nbsp;    public String getName() {
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        return this.name;</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    /**
+<i class="no-highlight">60</i>&nbsp;     * Returns credits of the module
+<i class="no-highlight">61</i>&nbsp;     *
+<i class="no-highlight">62</i>&nbsp;     * @return - module credits
+<i class="no-highlight">63</i>&nbsp;     */
+<i class="no-highlight">64</i>&nbsp;    public int getCredits() {
+<b class="fc"><i class="no-highlight">65</i>&nbsp;        return this.credits;</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    /**
+<i class="no-highlight">69</i>&nbsp;     * Returns string value of the object
+<i class="no-highlight">70</i>&nbsp;     *
+<i class="no-highlight">71</i>&nbsp;     * @return - String
+<i class="no-highlight">72</i>&nbsp;     */
+<i class="no-highlight">73</i>&nbsp;    @Override
+<i class="no-highlight">74</i>&nbsp;    public String toString() {
+<b class="fc"><i class="no-highlight">75</i>&nbsp;        return this.getCode() + &quot;,&quot; + this.getName() + &quot;,&quot; + this.getCredits();</b>
+<i class="no-highlight">76</i>&nbsp;    }
+<i class="no-highlight">77</i>&nbsp;
+<i class="no-highlight">78</i>&nbsp;    /**
+<i class="no-highlight">79</i>&nbsp;     * Checks if the two objects of the same class are equal
+<i class="no-highlight">80</i>&nbsp;     *
+<i class="no-highlight">81</i>&nbsp;     * @return boolean - true if equal, false if not equal
+<i class="no-highlight">82</i>&nbsp;     */
+<i class="no-highlight">83</i>&nbsp;    @Override
+<i class="no-highlight">84</i>&nbsp;    public boolean equals(Object mod) {
+<b class="fc"><i class="no-highlight">85</i>&nbsp;        if(mod instanceof Module) {</b>
+<b class="fc"><i class="no-highlight">86</i>&nbsp;            Module module = (Module) mod;</b>
+<b class="fc"><i class="no-highlight">87</i>&nbsp;            return this.getCode().equals(module.getCode());</b>
+<i class="no-highlight">88</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">89</i>&nbsp;        return false;</b>
+<i class="no-highlight">90</i>&nbsp;    }
+<i class="no-highlight">91</i>&nbsp;    /**
+<i class="no-highlight">92</i>&nbsp;     * Generates hashCode for the object
+<i class="no-highlight">93</i>&nbsp;     *
+<i class="no-highlight">94</i>&nbsp;     * @return int
+<i class="no-highlight">95</i>&nbsp;     */
+<i class="no-highlight">96</i>&nbsp;    @Override
+<i class="no-highlight">97</i>&nbsp;    public int hashCode() {
+<b class="fc"><i class="no-highlight">98</i>&nbsp;        int hc = 17;</b>
+<b class="fc"><i class="no-highlight">99</i>&nbsp;        hc = 37 * hc + (this.getCode() == null ? 0 : this.getCode().hashCode());</b>
+<b class="fc"><i class="no-highlight">100</i>&nbsp;        return hc;</b>
+<i class="no-highlight">101</i>&nbsp;    }
+<i class="no-highlight">102</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -200,7 +201,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-22 11:19</div>
+    <div style="float:right;">generated on 2021-10-22 12:29</div>
 </div>
 </body>
 </html>

@@ -9,10 +9,7 @@ import uk.ac.ncl.assessment.student.PGTStudent;
 import uk.ac.ncl.assessment.student.UGStudent;
 import uk.ac.ncl.assessment.university.Department;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -168,6 +165,23 @@ public class DepartmentTest {
             assertNull(e);
         }
         int noOfStudents = department.getNoOfStudents();
-        assertEquals("University has 0 number of students", 1, noOfStudents);
+        assertEquals("University has 1 number of students", 1, noOfStudents);
+        try {
+            boolean terminateSuccess = department.terminateStudent(s.getStudentId());
+            assertTrue((boolean) terminateSuccess);
+        } catch (Exception e) {
+            assertNull(e);
+        }
+        noOfStudents = department.getNoOfStudents();
+        assertEquals("University has 0 number of students", 0, noOfStudents);
+    }
+    @Test
+    public void invalidStudentTypeTEst() {
+        PGRStudent s = new PGRStudent("Intern", "ZJohn", "ZDoe", new Date());
+        try {
+            department.registerStudent(s);
+        } catch (Exception e) {
+            assertEquals("Invalid Student Type", e.getMessage());
+        }
     }
 }

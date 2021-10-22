@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    83.3%
+    84.2%
   </span>
   <span class="absValue">
-    (15/18)
+    (16/19)
   </span>
 </td>
 </tr>
@@ -81,51 +81,49 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import uk.ac.ncl.assessment.helper.Constants;
 <i class="no-highlight">7</i>&nbsp;import uk.ac.ncl.assessment.student.UGStudent;
 <i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;import java.util.ArrayList;
-<i class="no-highlight">10</i>&nbsp;import java.util.Calendar;
-<i class="no-highlight">11</i>&nbsp;import java.util.Date;
-<i class="no-highlight">12</i>&nbsp;import java.util.List;
-<i class="no-highlight">13</i>&nbsp;
-<i class="no-highlight">14</i>&nbsp;import static org.junit.Assert.*;
-<i class="no-highlight">15</i>&nbsp;
-<b class="fc"><i class="no-highlight">16</i>&nbsp;public class UGStudentTest {</b>
-<i class="no-highlight">17</i>&nbsp;    Calendar cal;
-<i class="no-highlight">18</i>&nbsp;    UGStudent ugStudent;
-<i class="no-highlight">19</i>&nbsp;    @Before
-<i class="no-highlight">20</i>&nbsp;    public void setUp() {
-<b class="fc"><i class="no-highlight">21</i>&nbsp;        cal  = Calendar.getInstance();</b>
-<b class="fc"><i class="no-highlight">22</i>&nbsp;        cal.set(1990, 1, 1);</b>
-<b class="fc"><i class="no-highlight">23</i>&nbsp;        ugStudent = new UGStudent(Constants.UG, &quot;John&quot;, &quot;Doe&quot;, cal.getTime());</b>
-<i class="no-highlight">24</i>&nbsp;    }
-<i class="no-highlight">25</i>&nbsp;    @Test
-<i class="no-highlight">26</i>&nbsp;    public void UGStudentSetSmartCardTest() {
-<i class="no-highlight">27</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">28</i>&nbsp;            ugStudent.setSmartCard();</b>
-<b class="nc"><i class="no-highlight">29</i>&nbsp;        } catch(Exception e) {</b>
-<b class="nc"><i class="no-highlight">30</i>&nbsp;            assertNull(e);</b>
-<b class="fc"><i class="no-highlight">31</i>&nbsp;        }</b>
-<i class="no-highlight">32</i>&nbsp;    }
-<i class="no-highlight">33</i>&nbsp;    @Test
-<i class="no-highlight">34</i>&nbsp;    public void UGStudentSetSmartCardBelowAge() {
-<b class="fc"><i class="no-highlight">35</i>&nbsp;        ugStudent = new UGStudent(Constants.PGR, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<i class="no-highlight">36</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">37</i>&nbsp;            ugStudent.setSmartCard();</b>
-<b class="fc"><i class="no-highlight">38</i>&nbsp;        } catch(Exception e) {</b>
-<b class="fc"><i class="no-highlight">39</i>&nbsp;            assertEquals(&quot;UG Student below 17 years old is not eligible for Smart Card&quot; ,e.getMessage());</b>
-<b class="nc"><i class="no-highlight">40</i>&nbsp;        }</b>
-<i class="no-highlight">41</i>&nbsp;    }
-<i class="no-highlight">42</i>&nbsp;    @Test
-<i class="no-highlight">43</i>&nbsp;    public void checkEnoughCreditTest() throws Exception {
-<b class="fc"><i class="no-highlight">44</i>&nbsp;        List&lt;Module&gt; modules = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">45</i>&nbsp;        modules.add(Module.getInstance(&quot;CSC8801&quot;, &quot;Advanced Programming in Java&quot;, 10));</b>
-<b class="fc"><i class="no-highlight">46</i>&nbsp;        ugStudent.setStudentModules(modules);</b>
-<b class="fc"><i class="no-highlight">47</i>&nbsp;        assertFalse(ugStudent.checkEnoughCredit());</b>
-<i class="no-highlight">48</i>&nbsp;    }
-<i class="no-highlight">49</i>&nbsp;    @Test
-<i class="no-highlight">50</i>&nbsp;    public void passPercentageTest() {
-<b class="fc"><i class="no-highlight">51</i>&nbsp;        assertEquals(40, ugStudent.getPassPercentage());</b>
-<i class="no-highlight">52</i>&nbsp;    }
-<i class="no-highlight">53</i>&nbsp;}
+<i class="no-highlight">9</i>&nbsp;import java.util.*;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;import static org.junit.Assert.*;
+<i class="no-highlight">12</i>&nbsp;
+<b class="fc"><i class="no-highlight">13</i>&nbsp;public class UGStudentTest {</b>
+<i class="no-highlight">14</i>&nbsp;    Calendar cal;
+<i class="no-highlight">15</i>&nbsp;    UGStudent ugStudent;
+<b class="fc"><i class="no-highlight">16</i>&nbsp;    Random r = new Random();</b>
+<i class="no-highlight">17</i>&nbsp;    @Before
+<i class="no-highlight">18</i>&nbsp;    public void setUp() {
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        cal  = Calendar.getInstance();</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        cal.set(1990, 1, 1);</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        ugStudent = new UGStudent(Constants.UG, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, cal.getTime());</b>
+<i class="no-highlight">22</i>&nbsp;    }
+<i class="no-highlight">23</i>&nbsp;    @Test
+<i class="no-highlight">24</i>&nbsp;    public void UGStudentSetSmartCardTest() {
+<i class="no-highlight">25</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            ugStudent.setSmartCard();</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;        } catch(Exception e) {</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;            assertNull(e);</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        }</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;    @Test
+<i class="no-highlight">32</i>&nbsp;    public void UGStudentSetSmartCardBelowAge() {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        ugStudent = new UGStudent(Constants.PGR, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<i class="no-highlight">34</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">35</i>&nbsp;            ugStudent.setSmartCard();</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        } catch(Exception e) {</b>
+<b class="fc"><i class="no-highlight">37</i>&nbsp;            assertEquals(&quot;UG Student below 17 years old is not eligible for Smart Card&quot; ,e.getMessage());</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;        }</b>
+<i class="no-highlight">39</i>&nbsp;    }
+<i class="no-highlight">40</i>&nbsp;    @Test
+<i class="no-highlight">41</i>&nbsp;    public void checkEnoughCreditTest() throws Exception {
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        List&lt;Module&gt; modules = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        modules.add(Module.getInstance(&quot;CSC8801&quot;, &quot;Advanced Programming in Java&quot;, 10));</b>
+<b class="fc"><i class="no-highlight">44</i>&nbsp;        ugStudent.setStudentModules(modules);</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;        assertFalse(ugStudent.checkEnoughCredit());</b>
+<i class="no-highlight">46</i>&nbsp;    }
+<i class="no-highlight">47</i>&nbsp;    @Test
+<i class="no-highlight">48</i>&nbsp;    public void passPercentageTest() {
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        assertEquals(40, ugStudent.getPassPercentage());</b>
+<i class="no-highlight">50</i>&nbsp;    }
+<i class="no-highlight">51</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -152,7 +150,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-22 11:19</div>
+    <div style="float:right;">generated on 2021-10-22 12:29</div>
 </div>
 </body>
 </html>

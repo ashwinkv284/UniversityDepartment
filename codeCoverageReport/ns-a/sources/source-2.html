@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    84.2%
+    85%
   </span>
   <span class="absValue">
-    (16/19)
+    (17/20)
   </span>
 </td>
 </tr>
@@ -83,53 +83,55 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">8</i>&nbsp;
 <i class="no-highlight">9</i>&nbsp;import java.util.Calendar;
 <i class="no-highlight">10</i>&nbsp;import java.util.Date;
-<i class="no-highlight">11</i>&nbsp;
-<i class="no-highlight">12</i>&nbsp;import static org.junit.Assert.assertEquals;
-<i class="no-highlight">13</i>&nbsp;import static org.junit.Assert.assertNull;
-<i class="no-highlight">14</i>&nbsp;
-<b class="fc"><i class="no-highlight">15</i>&nbsp;public class PGRStudentTest {</b>
-<i class="no-highlight">16</i>&nbsp;    Calendar cal;
-<i class="no-highlight">17</i>&nbsp;    PGRStudent pgrStudent;
-<i class="no-highlight">18</i>&nbsp;    @Before
-<i class="no-highlight">19</i>&nbsp;    public void setUp() {
-<b class="fc"><i class="no-highlight">20</i>&nbsp;        cal  = Calendar.getInstance();</b>
-<b class="fc"><i class="no-highlight">21</i>&nbsp;        cal.set(1990, 1, 1);</b>
-<b class="fc"><i class="no-highlight">22</i>&nbsp;        pgrStudent = new PGRStudent(Constants.PGR, &quot;John&quot;, &quot;Doe&quot;, cal.getTime());</b>
-<i class="no-highlight">23</i>&nbsp;    }
-<i class="no-highlight">24</i>&nbsp;    @Test
-<i class="no-highlight">25</i>&nbsp;    public void PGRStudentSupervisorTest() throws Exception {
-<b class="fc"><i class="no-highlight">26</i>&nbsp;        Supervisor supervisor = Supervisor.getInstance(&quot;Jane&quot;, &quot;Doe&quot;, &quot;jane2@ncl.ac.uk&quot;);</b>
-<b class="fc"><i class="no-highlight">27</i>&nbsp;        pgrStudent.setSupervisor(supervisor);</b>
-<b class="fc"><i class="no-highlight">28</i>&nbsp;        assertEquals(pgrStudent.getSupervisor(), supervisor);</b>
-<b class="fc"><i class="no-highlight">29</i>&nbsp;        assertEquals(pgrStudent.getSupervisor().hashCode(), supervisor.hashCode());</b>
-<i class="no-highlight">30</i>&nbsp;    }
-<i class="no-highlight">31</i>&nbsp;    @Test
-<i class="no-highlight">32</i>&nbsp;    public void PGRStudentSetSmartCardTest() {
-<i class="no-highlight">33</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">34</i>&nbsp;            pgrStudent.setSmartCard();</b>
-<b class="nc"><i class="no-highlight">35</i>&nbsp;        } catch(Exception e) {</b>
-<b class="nc"><i class="no-highlight">36</i>&nbsp;            assertNull(e);</b>
-<b class="fc"><i class="no-highlight">37</i>&nbsp;        }</b>
-<i class="no-highlight">38</i>&nbsp;    }
-<i class="no-highlight">39</i>&nbsp;    @Test
-<i class="no-highlight">40</i>&nbsp;    public void PGRStudentSetSmartCardBelowAge() {
-<b class="fc"><i class="no-highlight">41</i>&nbsp;        pgrStudent = new PGRStudent(Constants.PGR, &quot;John&quot;, &quot;Doe1&quot;, new Date());</b>
-<i class="no-highlight">42</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">43</i>&nbsp;            pgrStudent.setSmartCard();</b>
-<b class="fc"><i class="no-highlight">44</i>&nbsp;        } catch(Exception e) {</b>
-<b class="fc"><i class="no-highlight">45</i>&nbsp;            assertEquals(&quot;PG Students below 20 years old is not eligible for Smart Card&quot; ,e.getMessage());</b>
-<b class="nc"><i class="no-highlight">46</i>&nbsp;        }</b>
-<i class="no-highlight">47</i>&nbsp;    }
-<i class="no-highlight">48</i>&nbsp;    @Test
-<i class="no-highlight">49</i>&nbsp;    public void PGRStudentModuleTest() {
-<b class="fc"><i class="no-highlight">50</i>&nbsp;        pgrStudent.setStudentModules(null);</b>
-<i class="no-highlight">51</i>&nbsp;    }
-<i class="no-highlight">52</i>&nbsp;    @Test
-<i class="no-highlight">53</i>&nbsp;    public void passPercentageTest() {
-<b class="fc"><i class="no-highlight">54</i>&nbsp;        assertEquals(50, pgrStudent.getPassPercentage());</b>
-<i class="no-highlight">55</i>&nbsp;    }
-<i class="no-highlight">56</i>&nbsp;
-<i class="no-highlight">57</i>&nbsp;}
+<i class="no-highlight">11</i>&nbsp;import java.util.Random;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;import static org.junit.Assert.assertEquals;
+<i class="no-highlight">14</i>&nbsp;import static org.junit.Assert.assertNull;
+<i class="no-highlight">15</i>&nbsp;
+<b class="fc"><i class="no-highlight">16</i>&nbsp;public class PGRStudentTest {</b>
+<i class="no-highlight">17</i>&nbsp;    Calendar cal;
+<i class="no-highlight">18</i>&nbsp;    PGRStudent pgrStudent;
+<b class="fc"><i class="no-highlight">19</i>&nbsp;    Random r = new Random();</b>
+<i class="no-highlight">20</i>&nbsp;    @Before
+<i class="no-highlight">21</i>&nbsp;    public void setUp() {
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        cal  = Calendar.getInstance();</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        cal.set(1990, 1, 1);</b>
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        pgrStudent = new PGRStudent(Constants.PGR, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, cal.getTime());</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;    @Test
+<i class="no-highlight">27</i>&nbsp;    public void PGRStudentSupervisorTest() throws Exception {
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        Supervisor supervisor = Supervisor.getInstance(&quot;Jane&quot;, &quot;Doe&quot;, &quot;jane2@ncl.ac.uk&quot;);</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        pgrStudent.setSupervisor(supervisor);</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        assertEquals(pgrStudent.getSupervisor(), supervisor);</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        assertEquals(pgrStudent.getSupervisor().hashCode(), supervisor.hashCode());</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;    @Test
+<i class="no-highlight">34</i>&nbsp;    public void PGRStudentSetSmartCardTest() {
+<i class="no-highlight">35</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">36</i>&nbsp;            pgrStudent.setSmartCard();</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        } catch(Exception e) {</b>
+<b class="nc"><i class="no-highlight">38</i>&nbsp;            assertNull(e);</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        }</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;    @Test
+<i class="no-highlight">42</i>&nbsp;    public void PGRStudentSetSmartCardBelowAge() {
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        pgrStudent = new PGRStudent(Constants.PGR, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<i class="no-highlight">44</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">45</i>&nbsp;            pgrStudent.setSmartCard();</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        } catch(Exception e) {</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;            assertEquals(&quot;PG Students below 20 years old is not eligible for Smart Card&quot; ,e.getMessage());</b>
+<b class="nc"><i class="no-highlight">48</i>&nbsp;        }</b>
+<i class="no-highlight">49</i>&nbsp;    }
+<i class="no-highlight">50</i>&nbsp;    @Test
+<i class="no-highlight">51</i>&nbsp;    public void PGRStudentModuleTest() {
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        pgrStudent.setStudentModules(null);</b>
+<i class="no-highlight">53</i>&nbsp;    }
+<i class="no-highlight">54</i>&nbsp;    @Test
+<i class="no-highlight">55</i>&nbsp;    public void passPercentageTest() {
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        assertEquals(50, pgrStudent.getPassPercentage());</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -156,7 +158,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-22 11:19</div>
+    <div style="float:right;">generated on 2021-10-22 12:29</div>
 </div>
 </body>
 </html>

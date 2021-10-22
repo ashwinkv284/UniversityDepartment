@@ -58,10 +58,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    93.1%
+    93.3%
   </span>
   <span class="absValue">
-    (27/29)
+    (28/30)
   </span>
 </td>
 </tr>
@@ -81,72 +81,70 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">6</i>&nbsp;import uk.ac.ncl.assessment.student.AbstractStudent;
 <i class="no-highlight">7</i>&nbsp;import uk.ac.ncl.assessment.student.UGStudent;
 <i class="no-highlight">8</i>&nbsp;
-<i class="no-highlight">9</i>&nbsp;import java.util.ArrayList;
-<i class="no-highlight">10</i>&nbsp;import java.util.Calendar;
-<i class="no-highlight">11</i>&nbsp;import java.util.Date;
-<i class="no-highlight">12</i>&nbsp;import java.util.List;
-<i class="no-highlight">13</i>&nbsp;
-<i class="no-highlight">14</i>&nbsp;import static org.junit.Assert.*;
-<i class="no-highlight">15</i>&nbsp;
-<b class="fc"><i class="no-highlight">16</i>&nbsp;public class AbstractStudentTest {</b>
-<i class="no-highlight">17</i>&nbsp;    @Before
-<i class="no-highlight">18</i>&nbsp;    public void setUp() {
+<i class="no-highlight">9</i>&nbsp;import java.util.*;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;import static org.junit.Assert.*;
+<i class="no-highlight">12</i>&nbsp;
+<b class="fc"><i class="no-highlight">13</i>&nbsp;public class AbstractStudentTest {</b>
+<b class="fc"><i class="no-highlight">14</i>&nbsp;    Random r = new Random();</b>
+<i class="no-highlight">15</i>&nbsp;    @Before
+<i class="no-highlight">16</i>&nbsp;    public void setUp() {
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    }
 <i class="no-highlight">19</i>&nbsp;
-<i class="no-highlight">20</i>&nbsp;    }
-<i class="no-highlight">21</i>&nbsp;
-<i class="no-highlight">22</i>&nbsp;    @Test
-<i class="no-highlight">23</i>&nbsp;    public void getStudentIdTest() {
-<b class="fc"><i class="no-highlight">24</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">25</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<i class="no-highlight">26</i>&nbsp;        try {
-<b class="fc"><i class="no-highlight">27</i>&nbsp;            a.setStudentId();</b>
-<b class="nc"><i class="no-highlight">28</i>&nbsp;        } catch(Exception e) {</b>
-<b class="nc"><i class="no-highlight">29</i>&nbsp;            assertNull(e);</b>
-<b class="fc"><i class="no-highlight">30</i>&nbsp;        }</b>
-<b class="fc"><i class="no-highlight">31</i>&nbsp;        assertNotNull(a.getStudentId().toString());</b>
-<i class="no-highlight">32</i>&nbsp;    }
-<i class="no-highlight">33</i>&nbsp;
-<i class="no-highlight">34</i>&nbsp;    @Test
-<i class="no-highlight">35</i>&nbsp;    public void getStudentNameTest() {
-<b class="fc"><i class="no-highlight">36</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">37</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<b class="fc"><i class="no-highlight">38</i>&nbsp;        assertEquals(&quot;getStudentName returns John Doe&quot;, &quot;John Doe&quot;, a.getStudentName().toString());</b>
-<i class="no-highlight">39</i>&nbsp;    }
-<i class="no-highlight">40</i>&nbsp;
-<i class="no-highlight">41</i>&nbsp;    @Test
-<i class="no-highlight">42</i>&nbsp;    public void getStudentTypeTest() {
-<b class="fc"><i class="no-highlight">43</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">44</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<b class="fc"><i class="no-highlight">45</i>&nbsp;        assertEquals(&quot;getStudentType returns Undergraduate&quot;, &quot;Undergraduate&quot;, a.getStudentType());</b>
-<i class="no-highlight">46</i>&nbsp;    }
-<i class="no-highlight">47</i>&nbsp;
-<i class="no-highlight">48</i>&nbsp;    @Test
-<i class="no-highlight">49</i>&nbsp;    public void getStudentModulesTest() throws Exception {
-<b class="fc"><i class="no-highlight">50</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">51</i>&nbsp;        Module mod = Module.getInstance(&quot;8501&quot;, &quot;Advanced Programming in Java&quot;, 10);</b>
-<b class="fc"><i class="no-highlight">52</i>&nbsp;        m.add(mod);</b>
-<b class="fc"><i class="no-highlight">53</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<b class="fc"><i class="no-highlight">54</i>&nbsp;        a.setStudentModules(m);</b>
-<b class="fc"><i class="no-highlight">55</i>&nbsp;        List&lt;Module&gt; sModList = a.getStudentModules();</b>
-<b class="fc"><i class="no-highlight">56</i>&nbsp;        assertTrue(m.size() == sModList.size() &amp;&amp; m.containsAll(sModList) &amp;&amp; sModList.containsAll(m));</b>
-<i class="no-highlight">57</i>&nbsp;    }
-<i class="no-highlight">58</i>&nbsp;
-<i class="no-highlight">59</i>&nbsp;    @Test
-<i class="no-highlight">60</i>&nbsp;    public void getStudentDoBTest() {
-<b class="fc"><i class="no-highlight">61</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">62</i>&nbsp;        Calendar cal = Calendar.getInstance();</b>
-<b class="fc"><i class="no-highlight">63</i>&nbsp;        cal.set(1990, 1, 1);</b>
-<b class="fc"><i class="no-highlight">64</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, &quot;John&quot;, &quot;Doe&quot;, cal.getTime());</b>
-<b class="fc"><i class="no-highlight">65</i>&nbsp;        assertEquals(&quot;getStudentDoB returns correct DoB of student&quot;, cal.getTime(), a.getStudentDoB());</b>
-<i class="no-highlight">66</i>&nbsp;    }
-<i class="no-highlight">67</i>&nbsp;
-<i class="no-highlight">68</i>&nbsp;    @Test
-<i class="no-highlight">69</i>&nbsp;    public void checkEnoughCreditTest() {
-<b class="fc"><i class="no-highlight">70</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
-<b class="fc"><i class="no-highlight">71</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, &quot;John&quot;, &quot;Doe&quot;, new Date());</b>
-<b class="fc"><i class="no-highlight">72</i>&nbsp;        assertEquals(&quot;The student does not have enough credit&quot;, false, a.checkEnoughCredit());</b>
-<i class="no-highlight">73</i>&nbsp;    }
-<i class="no-highlight">74</i>&nbsp;}
+<i class="no-highlight">20</i>&nbsp;    @Test
+<i class="no-highlight">21</i>&nbsp;    public void getStudentIdTest() {
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<i class="no-highlight">24</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">25</i>&nbsp;            a.setStudentId();</b>
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        } catch(Exception e) {</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;            assertNull(e);</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        assertNotNull(a.getStudentId().toString());</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @Test
+<i class="no-highlight">33</i>&nbsp;    public void getStudentNameTest() {
+<b class="fc"><i class="no-highlight">34</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        assertNotNull(a.getStudentName().toString());</b>
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    @Test
+<i class="no-highlight">40</i>&nbsp;    public void getStudentTypeTest() {
+<b class="fc"><i class="no-highlight">41</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        assertEquals(&quot;getStudentType returns Undergraduate&quot;, &quot;Undergraduate&quot;, a.getStudentType());</b>
+<i class="no-highlight">44</i>&nbsp;    }
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    @Test
+<i class="no-highlight">47</i>&nbsp;    public void getStudentModulesTest() throws Exception {
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        Module mod = Module.getInstance(&quot;8501&quot;, &quot;Advanced Programming in Java&quot;, 10);</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        m.add(mod);</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        a.setStudentModules(m);</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        List&lt;Module&gt; sModList = a.getStudentModules();</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        assertTrue(m.size() == sModList.size() &amp;&amp; m.containsAll(sModList) &amp;&amp; sModList.containsAll(m));</b>
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;
+<i class="no-highlight">57</i>&nbsp;    @Test
+<i class="no-highlight">58</i>&nbsp;    public void getStudentDoBTest() {
+<b class="fc"><i class="no-highlight">59</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        Calendar cal = Calendar.getInstance();</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        cal.set(1990, 1, 1);</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, cal.getTime());</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;        assertEquals(&quot;getStudentDoB returns correct DoB of student&quot;, cal.getTime(), a.getStudentDoB());</b>
+<i class="no-highlight">64</i>&nbsp;    }
+<i class="no-highlight">65</i>&nbsp;
+<i class="no-highlight">66</i>&nbsp;    @Test
+<i class="no-highlight">67</i>&nbsp;    public void checkEnoughCreditTest() {
+<b class="fc"><i class="no-highlight">68</i>&nbsp;        List&lt;Module&gt; m = new ArrayList&lt;Module&gt;();</b>
+<b class="fc"><i class="no-highlight">69</i>&nbsp;        AbstractStudent a = new UGStudent(&quot;Undergraduate&quot;, r.nextInt(10000) + &quot;John&quot;, r.nextInt(10000) + &quot;Doe&quot;, new Date());</b>
+<b class="fc"><i class="no-highlight">70</i>&nbsp;        assertEquals(&quot;The student does not have enough credit&quot;, false, a.checkEnoughCredit());</b>
+<i class="no-highlight">71</i>&nbsp;    }
+<i class="no-highlight">72</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -173,7 +171,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-10-22 11:19</div>
+    <div style="float:right;">generated on 2021-10-22 12:29</div>
 </div>
 </body>
 </html>
