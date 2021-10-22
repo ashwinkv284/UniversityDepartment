@@ -13,14 +13,12 @@ import static org.junit.Assert.*;
 public class PGTStudentTest {
     Calendar cal;
     PGTStudent pgtStudent;
-    int code;
+    Random r = new Random();
     @Before
     public void setUp() {
-        Random r = new Random();
-        code = r.nextInt(10000);
         cal  = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        pgtStudent = new PGTStudent(Constants.PGR, code + "John", "Doe", cal.getTime());
+        pgtStudent = new PGTStudent(Constants.PGR, r.nextInt(10000) + "John", r.nextInt(10000) + "Doe", cal.getTime());
     }
     @Test
     public void PGRStudentSetSmartCardTest() {
@@ -32,7 +30,7 @@ public class PGTStudentTest {
     }
     @Test
     public void PGRStudentSetSmartCardBelowAge() {
-        pgtStudent = new PGTStudent(Constants.PGR, "John", "Doe", new Date());
+        pgtStudent = new PGTStudent(Constants.PGR, r.nextInt(10000) + "John", r.nextInt(10000) + "Doe", new Date());
         try {
             pgtStudent.setSmartCard();
         } catch(Exception e) {

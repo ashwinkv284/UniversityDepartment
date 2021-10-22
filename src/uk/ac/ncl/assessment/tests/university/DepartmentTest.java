@@ -92,7 +92,7 @@ public class DepartmentTest {
         int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        UGStudent s = new UGStudent("Undergraduate",code + "John", code + "Doe",cal.getTime());
+        UGStudent s = new UGStudent("Undergraduate",code + "John", code + "Doe", cal.getTime());
         ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         try {

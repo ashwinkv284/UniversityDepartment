@@ -8,6 +8,7 @@ import uk.ac.ncl.assessment.student.PGRStudent;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -15,11 +16,12 @@ import static org.junit.Assert.assertNull;
 public class PGRStudentTest {
     Calendar cal;
     PGRStudent pgrStudent;
+    Random r = new Random();
     @Before
     public void setUp() {
         cal  = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        pgrStudent = new PGRStudent(Constants.PGR, "John", "Doe", cal.getTime());
+        pgrStudent = new PGRStudent(Constants.PGR, r.nextInt(10000) + "John", r.nextInt(10000) + "Doe", cal.getTime());
     }
     @Test
     public void PGRStudentSupervisorTest() throws Exception {
@@ -38,7 +40,7 @@ public class PGRStudentTest {
     }
     @Test
     public void PGRStudentSetSmartCardBelowAge() {
-        pgrStudent = new PGRStudent(Constants.PGR, "John", "Doe1", new Date());
+        pgrStudent = new PGRStudent(Constants.PGR, r.nextInt(10000) + "John", r.nextInt(10000) + "Doe", new Date());
         try {
             pgrStudent.setSmartCard();
         } catch(Exception e) {
