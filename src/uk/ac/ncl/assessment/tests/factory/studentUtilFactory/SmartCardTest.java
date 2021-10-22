@@ -42,7 +42,7 @@ public class SmartCardTest {
     }
     @Test
     public void equalsTest() throws Exception {
-        SmartCard sc = SmartCard.getInstance("Lorem", "Ipsum", cal.getTime(), Constants.UG);
+        SmartCard sc = SmartCard.getInstance("4Lorem", "V9Ipsum", cal.getTime(), Constants.UG);
         assertNotEquals(smartCard, sc);
     }
     @Test
