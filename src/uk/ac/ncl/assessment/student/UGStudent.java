@@ -7,6 +7,7 @@ import java.util.Date;
 public class UGStudent extends AbstractStudent {
     private final static int numberOfCredits = 120;
     private final static int passPercentage  = 40;
+    private final static int minAge          = 17;
     /**
      * Returns instance of the class
      *
@@ -25,7 +26,7 @@ public class UGStudent extends AbstractStudent {
     @Override
     public void setSmartCard() throws Exception {
         int ageOfStudent = Utils.calculateAge(this.getStudentDoB());
-        if (ageOfStudent >= 17) {
+        if (ageOfStudent >= minAge) {
             super.setSmartCard();
         } else {
             throw new Exception("UG Student below 17 years old is not eligible for Smart Card");
