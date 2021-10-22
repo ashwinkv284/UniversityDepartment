@@ -12,11 +12,13 @@ import uk.ac.ncl.assessment.university.Department;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
 public class DepartmentTest {
     Department department;
+    Random r = new Random();
     @Before
     public void setUp() throws Exception {
         department = Department.getInstance();
@@ -24,9 +26,10 @@ public class DepartmentTest {
 
     @Test
     public void registerUGStudentTest() {
+        int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        UGStudent s = new UGStudent("Undergraduate","John", "Doe",cal.getTime());
+        UGStudent s = new UGStudent("Undergraduate",code + "Lorem", "Ipsum",cal.getTime());
         ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         Boolean regSuccess = null;
@@ -45,9 +48,10 @@ public class DepartmentTest {
     }
     @Test
     public void registerPGTStudentTest() {
+        int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        PGTStudent s = new PGTStudent("Postgraduate Taught","John", "Doe",cal.getTime());
+        PGTStudent s = new PGTStudent("Postgraduate Taught",code + "John", code + "Doe",cal.getTime());
         ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         Boolean regSuccess = null;
@@ -65,9 +69,10 @@ public class DepartmentTest {
     }
     @Test
     public void registerPGRStudentTest() {
+        int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        PGRStudent s = new PGRStudent("Postgraduate Research","John", "Doe",cal.getTime());
+        PGRStudent s = new PGRStudent("Postgraduate Research",code + "John", code + "Doe",cal.getTime());
         Boolean regSuccess = false;
         try {
             regSuccess = department.registerStudent(s);
@@ -83,10 +88,11 @@ public class DepartmentTest {
         }
     }
     @Test
-    public void amendStudentDataTest() {
+    public void amendStudentDataTest() throws Exception {
+        int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        UGStudent s = new UGStudent("Undergraduate","John", "Doe",cal.getTime());
+        UGStudent s = new UGStudent("Undergraduate",code + "John", code + "Doe",cal.getTime());
         ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         try {
@@ -111,9 +117,10 @@ public class DepartmentTest {
     }
     @Test
     public void terminateStudentTest() {
+        int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        UGStudent s = new UGStudent("Undergraduate","John", "Doe",cal.getTime());
+        UGStudent s = new UGStudent("Undergraduate",code + "John", code + "Doe",cal.getTime());
         ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
         try {
@@ -137,7 +144,7 @@ public class DepartmentTest {
         }
     }
     @Test
-    public void terminateStudentWithNonExistentStudentIdTest() {
+    public void terminateStudentWithNonExistentStudentIdTest() throws Exception {
         StudentId sId = StudentId.getInstance();
         try {
             department.terminateStudent(sId);
@@ -154,7 +161,7 @@ public class DepartmentTest {
     public void noOfStudentsWithRecordsTest() {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        PGRStudent s = new PGRStudent("Postgraduate Research","John", "Doe",cal.getTime());
+        PGRStudent s = new PGRStudent("Postgraduate Research","ZJohn", "ZDoe",cal.getTime());
         try {
            department.registerStudent(s);
         } catch (Exception e) {

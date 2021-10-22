@@ -6,21 +6,21 @@ import uk.ac.ncl.assessment.factory.module.Module;
 import uk.ac.ncl.assessment.helper.Constants;
 import uk.ac.ncl.assessment.student.PGTStudent;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
 public class PGTStudentTest {
     Calendar cal;
     PGTStudent pgtStudent;
+    int code;
     @Before
     public void setUp() {
+        Random r = new Random();
+        code = r.nextInt(10000);
         cal  = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        pgtStudent = new PGTStudent(Constants.PGR, "John", "Doe", cal.getTime());
+        pgtStudent = new PGTStudent(Constants.PGR, code + "John", "Doe", cal.getTime());
     }
     @Test
     public void PGRStudentSetSmartCardTest() {
@@ -40,9 +40,9 @@ public class PGTStudentTest {
         }
     }
     @Test
-    public void checkEnoughCreditTest() {
+    public void checkEnoughCreditTest() throws Exception {
         List<Module> modules = new ArrayList<Module>();
-        modules.add(Module.getInstance("CSC8404", "Advanced Programming in Java", 10));
+        modules.add(Module.getInstance("CSC8607", "Advanced Programming in Java", 10));
         pgtStudent.setStudentModules(modules);
         assertFalse(pgtStudent.checkEnoughCredit());
     }

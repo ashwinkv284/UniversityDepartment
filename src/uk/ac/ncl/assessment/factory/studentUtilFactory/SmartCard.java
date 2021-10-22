@@ -36,8 +36,9 @@ public final class SmartCard {
      * @param dateOfBirth  - date of birth of the student
      * @param studentType  - type of student
      * @return             - Instance of class
+     * @throws Exception when smart card number already exists
      */
-    public static SmartCard getInstance(String firstName, String lastName, Date dateOfBirth, String studentType) {
+    public static SmartCard getInstance(String firstName, String lastName, Date dateOfBirth, String studentType) throws Exception {
         Date today = new Date();
         SmartCard sCard = new SmartCard(dateOfBirth, today);
         sCard.setSmartCardNumber(firstName, lastName);
@@ -72,7 +73,7 @@ public final class SmartCard {
      * @param firstName    - firstName of the student
      * @param lastName     - lastName of the student
      */
-    private void setSmartCardNumber(String firstName, String lastName) {
+    private void setSmartCardNumber(String firstName, String lastName) throws Exception {
         this.smartCardNumber = SmartCardNumber.getInstance(firstName, lastName);
     }
     /**

@@ -22,8 +22,8 @@ public class PGRStudentTest {
         pgrStudent = new PGRStudent(Constants.PGR, "John", "Doe", cal.getTime());
     }
     @Test
-    public void PGRStudentSupervisorTest() {
-        Supervisor supervisor = Supervisor.getInstance("Jane", "Doe", "jane@ncl.ac.uk");
+    public void PGRStudentSupervisorTest() throws Exception {
+        Supervisor supervisor = Supervisor.getInstance("Jane", "Doe", "jane2@ncl.ac.uk");
         pgrStudent.setSupervisor(supervisor);
         assertEquals(pgrStudent.getSupervisor(), supervisor);
         assertEquals(pgrStudent.getSupervisor().hashCode(), supervisor.hashCode());
@@ -38,7 +38,7 @@ public class PGRStudentTest {
     }
     @Test
     public void PGRStudentSetSmartCardBelowAge() {
-        pgrStudent = new PGRStudent(Constants.PGR, "John", "Doe", new Date());
+        pgrStudent = new PGRStudent(Constants.PGR, "John", "Doe1", new Date());
         try {
             pgrStudent.setSmartCard();
         } catch(Exception e) {

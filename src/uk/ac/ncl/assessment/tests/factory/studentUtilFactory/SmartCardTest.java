@@ -6,17 +6,20 @@ import uk.ac.ncl.assessment.factory.studentUtilFactory.SmartCard;
 import uk.ac.ncl.assessment.helper.Constants;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
 public class SmartCardTest {
     Calendar cal;
     SmartCard smartCard;
+    Random r = new Random();
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        int code = r.nextInt(10000);
         cal  = Calendar.getInstance();
         cal.set(1990, 1, 1);
-        smartCard = SmartCard.getInstance("John", "Doe", cal.getTime(), Constants.UG);
+        smartCard = SmartCard.getInstance(code + "Tony", code + "Doe", cal.getTime(), Constants.UG);
     }
     @Test
     public void getSmartCardNumberTest() {
@@ -38,13 +41,13 @@ public class SmartCardTest {
         assertEquals(c.getTime(), smartCard.getExpiryDate());
     }
     @Test
-    public void equalsTest() {
+    public void equalsTest() throws Exception {
         SmartCard sc = SmartCard.getInstance("Lorem", "Ipsum", cal.getTime(), Constants.UG);
         assertNotEquals(smartCard, sc);
     }
     @Test
-    public void hashCodeTest() {
-        SmartCard sc = SmartCard.getInstance("Lorem", "Ipsum", cal.getTime(), Constants.UG);
+    public void hashCodeTest() throws Exception {
+        SmartCard sc = SmartCard.getInstance("1Lorem", "1Ipsum", cal.getTime(), Constants.UG);
         assertNotEquals(sc.hashCode(), smartCard.hashCode());
     }
 }

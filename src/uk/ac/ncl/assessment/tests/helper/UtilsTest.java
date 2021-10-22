@@ -10,6 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNull;
 
 public class UtilsTest {
     @Test
@@ -22,7 +23,12 @@ public class UtilsTest {
     @Test
     public void checkEnoughCreditTest() {
         List<Module> moduleList = new ArrayList<Module>();
-        Module module = Module.getInstance("CSC8404", "Adv Programming in Java", 10);
+        Module module = null;
+        try {
+            module = Module.getInstance("CSC8901", "Adv Programming in Java", 10);
+        } catch (Exception e) {
+            assertNull(e);
+        }
         moduleList.add(module);
         boolean enoughCredit = Utils.checkEnoughCredit(moduleList, 10);
         assertTrue(enoughCredit);

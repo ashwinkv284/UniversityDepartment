@@ -63,8 +63,9 @@ public abstract class AbstractStudent implements Student {
     /**
      * Sets auto generated studentId
      *
+     * @throws Exception when studentId already exists
      */
-    public void setStudentId() {
+    public void setStudentId() throws Exception {
         this.studentId = StudentId.getInstance();
     }
     /**

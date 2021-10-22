@@ -47,7 +47,7 @@ public class PGRStudent extends AbstractStudent{
         if (ageOfStudent >= 20) {
             super.setSmartCard();
         } else {
-            System.err.println("PG Students below 20 years old is not eligible for Smart Card");
+            throw new Exception("PG Students below 20 years old is not eligible for Smart Card");
         }
     }
     /**
@@ -57,7 +57,7 @@ public class PGRStudent extends AbstractStudent{
      */
     @Override
     public void setStudentModules(List<Module> modules) {
-        System.err.println("PGR Students does not need to register for modules");
+        //does nothing as PGR Students does not need to register for modules
     }
     /**
      * returns pass percentage required

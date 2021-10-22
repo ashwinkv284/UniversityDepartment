@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SupervisorTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">uk.ac.ncl.assessment.tests.factory.supervisor</a>
+</div>
+
+<h1>Coverage Summary for Class: SupervisorTest (uk.ac.ncl.assessment.tests.factory.supervisor)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SupervisorTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    94.4%
+  </span>
+  <span class="absValue">
+    (17/18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package uk.ac.ncl.assessment.tests.factory.supervisor;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import org.junit.Before;
+<i class="no-highlight">4</i>&nbsp;import org.junit.Test;
+<i class="no-highlight">5</i>&nbsp;import uk.ac.ncl.assessment.factory.supervisor.Supervisor;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.util.Random;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import static org.junit.Assert.*;
+<i class="no-highlight">10</i>&nbsp;
+<b class="fc"><i class="no-highlight">11</i>&nbsp;public class SupervisorTest {</b>
+<i class="no-highlight">12</i>&nbsp;    Supervisor supervisor;
+<i class="no-highlight">13</i>&nbsp;    int code;
+<i class="no-highlight">14</i>&nbsp;    @Before
+<i class="no-highlight">15</i>&nbsp;    public void setUp() throws Exception {
+<b class="fc"><i class="no-highlight">16</i>&nbsp;        Random rd = new Random();</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        code = rd.nextInt(10000);</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;        supervisor = Supervisor.getInstance(&quot;John&quot;, &quot;Doe&quot;, &quot;john&quot; + String.valueOf(code) + &quot;@ncl.ac.uk&quot;);</b>
+<i class="no-highlight">19</i>&nbsp;    }
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Test
+<i class="no-highlight">22</i>&nbsp;    public void getInstanceTest() {
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        assertNotNull(supervisor);</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Test
+<i class="no-highlight">27</i>&nbsp;    public void getFirstNameTest() {
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        assertEquals(&quot;John&quot;, supervisor.getFirstName());</b>
+<i class="no-highlight">29</i>&nbsp;    }
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    @Test
+<i class="no-highlight">32</i>&nbsp;    public void getLastNameTest() {
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        assertEquals(&quot;Doe&quot;, supervisor.getLastName());</b>
+<i class="no-highlight">34</i>&nbsp;    }
+<i class="no-highlight">35</i>&nbsp;
+<i class="no-highlight">36</i>&nbsp;    @Test
+<i class="no-highlight">37</i>&nbsp;    public void getEmailTest() {
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        assertEquals(&quot;john&quot; + code + &quot;@ncl.ac.uk&quot;, supervisor.getEmail());</b>
+<i class="no-highlight">39</i>&nbsp;    }
+<i class="no-highlight">40</i>&nbsp;
+<i class="no-highlight">41</i>&nbsp;    @Test
+<i class="no-highlight">42</i>&nbsp;    public void toStringTest() {
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        assertEquals(&quot;Name: John Doe, Email: john&quot; + code + &quot;@ncl.ac.uk&quot;, supervisor.toString());</b>
+<i class="no-highlight">44</i>&nbsp;    }
+<i class="no-highlight">45</i>&nbsp;
+<i class="no-highlight">46</i>&nbsp;    @Test
+<i class="no-highlight">47</i>&nbsp;    public void equalsTest() throws Exception {
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        Supervisor anotherSupervisor = Supervisor.getInstance(&quot;Jane&quot;, &quot;Doe&quot;, &quot;jane@ncl.ac.uk&quot;);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        assertNotEquals(supervisor, anotherSupervisor);</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        assertFalse(supervisor.equals(new Object()));</b>
+<i class="no-highlight">51</i>&nbsp;    }
+<i class="no-highlight">52</i>&nbsp;
+<i class="no-highlight">53</i>&nbsp;    @Test
+<i class="no-highlight">54</i>&nbsp;    public void testHashCode() throws Exception {
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        Supervisor anotherSupervisor = Supervisor.getInstance(&quot;Jane&quot;, &quot;Doe&quot;, &quot;jane1@ncl.ac.uk&quot;);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        assertNotEquals(supervisor.hashCode(), anotherSupervisor.hashCode());</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    @Test
+<i class="no-highlight">60</i>&nbsp;    public void supervisorAlreadyExistsTest() {
+<i class="no-highlight">61</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">62</i>&nbsp;            Supervisor.getInstance(&quot;John&quot;, &quot;Doe&quot;, &quot;john&quot; + String.valueOf(code) + &quot;@ncl.ac.uk&quot;);</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;            assertEquals(&quot;Supervisor already exists&quot;, e.getMessage());</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        }</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-10-22 11:19</div>
+</div>
+</body>
+</html>

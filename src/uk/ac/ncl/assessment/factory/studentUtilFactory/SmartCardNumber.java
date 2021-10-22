@@ -21,8 +21,9 @@ public final class SmartCardNumber {
      * @param firstName   - firstName of student
      * @param lastName    - lastName of student
      * @return            - instance of class
+     * @throws Exception when smart card number already exists
      */
-    public static SmartCardNumber getInstance(String firstName, String lastName) {
+    public static SmartCardNumber getInstance(String firstName, String lastName) throws Exception {
         Random rand = new Random();
         String smartCardNumber = String.valueOf(firstName.charAt(0)) + String.valueOf(lastName.charAt(0));
         smartCardNumber += "-" + Calendar.getInstance().get(Calendar.YEAR);
@@ -30,7 +31,7 @@ public final class SmartCardNumber {
         if(!allSmartCardNumbers.contains(smartCardNumber)) {
             allSmartCardNumbers.add(smartCardNumber);
         } else {
-            System.err.println("Smart Card Number already exists");
+            throw new Exception("Smart Card Number already exists");
         }
         return new SmartCardNumber(smartCardNumber);
     }

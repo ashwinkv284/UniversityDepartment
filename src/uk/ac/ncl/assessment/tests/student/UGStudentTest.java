@@ -36,13 +36,13 @@ public class UGStudentTest {
         try {
             ugStudent.setSmartCard();
         } catch(Exception e) {
-            assertEquals("UG Students below 20 years old is not eligible for Smart Card" ,e.getMessage());
+            assertEquals("UG Student below 17 years old is not eligible for Smart Card" ,e.getMessage());
         }
     }
     @Test
-    public void checkEnoughCreditTest() {
+    public void checkEnoughCreditTest() throws Exception {
         List<Module> modules = new ArrayList<Module>();
-        modules.add(Module.getInstance("CSC8404", "Advanced Programming in Java", 10));
+        modules.add(Module.getInstance("CSC8801", "Advanced Programming in Java", 10));
         ugStudent.setStudentModules(modules);
         assertFalse(ugStudent.checkEnoughCredit());
     }

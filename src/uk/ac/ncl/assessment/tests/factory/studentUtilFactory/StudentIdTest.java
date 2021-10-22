@@ -10,7 +10,7 @@ public class StudentIdTest {
     StudentId studentId;
     StudentId nullStudentId;
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         studentId = StudentId.getInstance();
     }
 
@@ -26,13 +26,13 @@ public class StudentIdTest {
     }
 
     @Test
-    public void equalsTest() {
+    public void equalsTest() throws Exception {
         StudentId sId = StudentId.getInstance();
         assertNotEquals(studentId, sId);
     }
 
     @Test
-    public void hashCodeTest() {
+    public void hashCodeTest() throws Exception {
         StudentId sId = StudentId.getInstance();
         assertNotEquals(studentId.hashCode(), sId.hashCode());
     }

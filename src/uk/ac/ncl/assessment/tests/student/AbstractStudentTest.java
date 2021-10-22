@@ -23,7 +23,11 @@ public class AbstractStudentTest {
     public void getStudentIdTest() {
         List<Module> m = new ArrayList<Module>();
         AbstractStudent a = new UGStudent("Undergraduate", "John", "Doe", new Date());
-        a.setStudentId();
+        try {
+            a.setStudentId();
+        } catch(Exception e) {
+            assertNull(e);
+        }
         assertNotNull(a.getStudentId().toString());
     }
 
@@ -42,9 +46,9 @@ public class AbstractStudentTest {
     }
 
     @Test
-    public void getStudentModulesTest() {
+    public void getStudentModulesTest() throws Exception {
         List<Module> m = new ArrayList<Module>();
-        Module mod = Module.getInstance("8404", "Advanced Programming in Java", 10);
+        Module mod = Module.getInstance("8501", "Advanced Programming in Java", 10);
         m.add(mod);
         AbstractStudent a = new UGStudent("Undergraduate", "John", "Doe", new Date());
         a.setStudentModules(m);

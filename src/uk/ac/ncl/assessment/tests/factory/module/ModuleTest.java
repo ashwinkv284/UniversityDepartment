@@ -4,13 +4,18 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ncl.assessment.factory.module.Module;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class ModuleTest {
     Module module;
+    int code;
     @Before
-    public void setUp() {
-        module = Module.getInstance("CSC8404", "Adv Programming in Java", 10);
+    public void setUp() throws Exception{
+        Random rd = new Random();
+        code = rd.nextInt(10000);
+        module = Module.getInstance(String.valueOf(code), "Adv Programming in Java", 10);
     }
 
     @Test
@@ -20,7 +25,7 @@ public class ModuleTest {
 
     @Test
     public void getCode() {
-        assertEquals("CSC8404", module.getCode());
+        assertEquals(String.valueOf(code), module.getCode());
     }
 
     @Test
@@ -35,18 +40,27 @@ public class ModuleTest {
 
     @Test
     public void toStringTest() {
-        assertEquals("CSC8404,Adv Programming in Java,10", module.toString());
+        assertEquals(String.valueOf(code) + ",Adv Programming in Java,10", module.toString());
     }
 
     @Test
-    public void equalsTest() {
-        Module mod1 = Module.getInstance("CSC8701", "MBSE", 10);
+    public void equalsTest() throws Exception {
+        Module mod1 = Module.getInstance("CSC8709", "MBSE", 10);
         assertNotEquals(module, mod1);
     }
 
     @Test
-    public void hashCodeTest() {
-        Module mod1 = Module.getInstance("CSC8702", "MBSE", 10);
+    public void hashCodeTest() throws Exception {
+        Module mod1 = Module.getInstance("CSC8710", "MBSE", 10);
         assertNotEquals(module.hashCode(), mod1.hashCode());
+    }
+
+    @Test
+    public void moduleAlreadyExistsTest() {
+        try {
+            Module.getInstance(String.valueOf(code), "Adv Programming in Java", 10);
+        } catch(Exception e) {
+            assertEquals("Module already exists", e.getMessage());
+        }
     }
 }

@@ -1,0 +1,14 @@
+uk.ac.ncl.assessment.factory.module
+uk.ac.ncl.assessment.factory.studentUtilFactory
+uk.ac.ncl.assessment.factory.supervisor
+uk.ac.ncl.assessment.helper
+uk.ac.ncl.assessment.student
+uk.ac.ncl.assessment.tests.factory.module
+uk.ac.ncl.assessment.tests.factory.studentUtilFactory
+uk.ac.ncl.assessment.tests.factory.supervisor
+uk.ac.ncl.assessment.tests.helper
+uk.ac.ncl.assessment.tests.student
+uk.ac.ncl.assessment.tests.university
+uk.ac.ncl.assessment.tests.validate
+uk.ac.ncl.assessment.university
+uk.ac.ncl.assessment.validate

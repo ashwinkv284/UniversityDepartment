@@ -27,12 +27,13 @@ public final class Supervisor {
      * @param email        - email of supervisor: String
      *
      * @return instance of class
+     * @throws Exception when supervisor already exists with the same email Id
      */
-    public static Supervisor getInstance(String firstName, String lastName, String email) {
+    public static Supervisor getInstance(String firstName, String lastName, String email) throws Exception {
         if(!allSupervisors.contains(email)) {
             allSupervisors.add(email);
         } else {
-            System.err.println("Supervisor already exists");
+            throw new Exception("Supervisor already exists");
         }
         return new Supervisor(firstName, lastName, email);
     }

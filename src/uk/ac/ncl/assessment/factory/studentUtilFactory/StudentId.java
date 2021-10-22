@@ -18,15 +18,16 @@ public final class StudentId {
      * Returns instance of the class
 
      * @return - Instance of class
+     * @throws Exception when studentId already exists
      */
-    public static StudentId getInstance() {
+    public static StudentId getInstance() throws Exception {
         Random rand = new Random();
         String studentId = String.valueOf((char)((char)rand.nextInt(26) + 'a'))
                            + String.valueOf(rand.nextInt(10000));
         if(!allStudentIds.contains(studentId)) {
             allStudentIds.add(studentId);
         } else {
-            System.err.println("StudentId already exists");
+            throw new Exception("StudentId already exists");
         }
         return new StudentId(studentId);
     }

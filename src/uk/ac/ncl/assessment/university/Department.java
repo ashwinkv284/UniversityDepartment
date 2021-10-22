@@ -115,7 +115,7 @@ public class Department extends AbstractUniversity {
      * Used to load all modules
      *
      */
-    private static void loadModules() throws FileNotFoundException {
+    private static void loadModules() throws Exception {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir")
                 + "/src/uk/ac/ncl/assessment/data/modules.csv"));) {
             while (scanner.hasNextLine()) {
@@ -138,7 +138,7 @@ public class Department extends AbstractUniversity {
      * Used to load all supervisor from file
      *
      */
-    private static void loadSupervisors() throws FileNotFoundException {
+    private static void loadSupervisors() throws Exception {
         try (Scanner scanner = new Scanner(new File(System.getProperty("user.dir")
                 + "/src/uk/ac/ncl/assessment/data/supervisors.csv"));) {
             while (scanner.hasNextLine()) {

@@ -27,12 +27,13 @@ public final class Module {
      * @param name    - name of the module
      * @param credits - credits allocated for the module
      * @return        - Instance of class
+     * @throws Exception when module already exists
      */
-    public static Module getInstance(String code, String name, int credits) {
+    public static Module getInstance(String code, String name, int credits) throws Exception {
         if(!modules.contains(code+name+credits)) {
             modules.add(code+name+credits);
         } else {
-            System.err.println("Module already exists");
+            throw new Exception("Module already exists");
         }
         return new Module(code, name, credits);
     }
