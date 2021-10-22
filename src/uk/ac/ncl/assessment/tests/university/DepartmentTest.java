@@ -38,7 +38,7 @@ public class DepartmentTest {
         } catch (Exception e) {
             assertNull(e);
         }
-        assertEquals(true, (boolean) regSuccess);
+        assertTrue((boolean) regSuccess);
         assertNotNull("Student id is not null", s.getStudentId());
         try {
             department.terminateStudent(s.getStudentId());
@@ -73,7 +73,7 @@ public class DepartmentTest {
         Calendar cal = Calendar.getInstance();
         cal.set(1990, 1, 1);
         PGRStudent s = new PGRStudent("Postgraduate Research",code + "John", code + "Doe",cal.getTime());
-        Boolean regSuccess = false;
+        boolean regSuccess = false;
         try {
             regSuccess = department.registerStudent(s);
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class DepartmentTest {
     public void amendStudentDataTest() throws Exception {
         int code = r.nextInt(10000);
         Calendar cal = Calendar.getInstance();
-        cal.set(1990, 1, 1);
+        cal.set(1990, Calendar.FEBRUARY, 1);
         UGStudent s = new UGStudent("Undergraduate",code + "John", code + "Doe", cal.getTime());
         ArrayList<Module> modules = new ArrayList<Module>(department.getAllModules().values());
         s.setStudentModules(modules);
@@ -129,7 +129,7 @@ public class DepartmentTest {
             assertNull(e);
         }
         try {
-            Boolean terminateSuccess = department.terminateStudent(s.getStudentId());
+            boolean terminateSuccess = department.terminateStudent(s.getStudentId());
             assertTrue((boolean) terminateSuccess);
         } catch (Exception e) {
             assertNull(e);
